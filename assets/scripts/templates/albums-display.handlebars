@@ -1,7 +1,23 @@
 
+<ul>
 {{#each albums}}
   {{#each this}}
-    <h3>{{this.title}}</h3>
-    <h3>{{this.artist}}</h3>
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <li class="edit-album">
+          <h3>{{this.title}}</h3>
+          <h4>{{this.artist}}</h4>
+          {{#if this.cover}}
+            <div class="album-cover">
+              <img scr=''>
+            </div>
+          {{/if}}
+          {{#if this.description}}
+            <div class="album-description"></div>
+          {{/if}}
+          <div class="album-thoughts">{{this.thoughts}}</div>
+        </li>
+      </div>
+    </div>
   {{/each}}
 {{/each}}
