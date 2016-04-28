@@ -3,7 +3,7 @@
 const app = require('../app-data');
 const ui = require('./ui');
 
-
+//User CRUD
 const signUp = (success, failure, data) => {
   $.ajax({
     method: "POST",
@@ -24,19 +24,54 @@ const signIn = (success, failure, data) => {
   .fail(failure);
 };
 
+const changePassword = (success, failure, data) => {
+  $.ajax({
+    method: "PATCH",
+    url: app.api + 'change-password/' + ui.currentUser.id,
+    data: {
+      'passwords': {
+        'old': data.pw_creds.old,
+        'new': data.pw_creds.new
+      }
+    },
+    headers: {
+      contentType: "application.json",
+      Authorization: "Token token=" + ui.currentUser.token
+    },
+  }).done(success)
+  .fail(failure);
+};
+
+
+const signOut = (success, failure) => {
+  $.ajax({
+    method: "DELETE",
+    url: app.api + 'sign-out/' + ui.currentUser.id,
+    headers: {
+      Authorization: 'Token token=' + ui.currentUser.token
+    },
+  }).done(success)
+  .fail(failure);
+};
+
+
+
+
+//Album CRUD
 const newAlbum = (success, failure, data) => {
   $.ajax({
     method: "POST",
-    url: app.api + 'albums',
-    data: {
-    "album": {
-      "title": data.album.title,
-      "artist": data.album.artist,
-      "user_id": ui.currentUser.id
-    },
+    url: app.api + 'users/' + ui.currentUser.id +'/albums/',
+    dataType: 'json',
     headers: {
       Authorization: "Token token=" + ui.currentUser.token
-    }}
+    },
+    data: {
+      "album": {
+        "title": data.album.title,
+        "artist": data.album.artist,
+      }
+    }
   })
   .done(success)
   .fail(failure);
@@ -44,6 +79,7 @@ const newAlbum = (success, failure, data) => {
 
 //Read albums
 let displayAlbums = function(albums){
+    $('.content').html('');
   let albumsDisplayTemplate = require('../templates/albums-display.handlebars');
     $('.content').append(albumsDisplayTemplate({
       albums
@@ -52,12 +88,17 @@ let displayAlbums = function(albums){
 
 let getAlbums = function(){
   $.ajax({
-    url: app.api + '/albums/' + ui.currentUser.id,
+    method: "GET",
+    url: app.api + 'users/' + ui.currentUser.id + '/albums',
     // method: 'GET',
-    dataType: 'json'
+    dataType: 'json',
+    headers: {
+      Authorization: "Token token=" + ui.currentUser.token
+    }
   }).done(function(albums){
-    displayAlbums(albums);
     console.log(albums);
+    displayAlbums(albums);
+
   });
 };
 
@@ -65,6 +106,8 @@ let getAlbums = function(){
 module.exports = {
   signUp,
   signIn,
+  changePassword,
+  signOut,
   newAlbum,
   getAlbums,
   displayAlbums

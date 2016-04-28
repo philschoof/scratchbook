@@ -11,7 +11,7 @@ const authApi = require('./auth/api');
 require('./auth/events');
 const authUi = require('./auth/ui');
 
-
+//Users
 $('#sign-up').on('submit', function (event){
   console.log('click');
   let data = getFormFields(this);
@@ -28,6 +28,21 @@ $('#sign-in').on('submit', function (event){
 
 });
 
+$('#change-password').on('submit', function(event){
+  let data = getFormFields(this);
+  event.preventDefault();
+  authApi.changePassword(authUi.changePasswordSuccess, authUi.failure, data);
+});
+
+$('.sign-out').on('click', function(event){
+  event.preventDefault();
+  authApi.signOut(authUi.signOutSuccess, authUi.failure)
+});
+
+
+
+
+//Albums
 $('#new-album').on('submit', function(event){
   let data = getFormFields(this);
   console.log(data);

@@ -42,8 +42,11 @@
               </div><!-- /.container-fluid -->
               </nav>
             <button class ="btn btn-success albums">Button</button>
+            <button class ="btn btn-success password">Change Password</button>
+            <button class ="btn btn-success sign-out">Sign-Out</button>
 
-            <div class="content">
+
+
 
               <form id="new-album">
                 <div class="form-group">
@@ -56,6 +59,9 @@
                 </div>
                 <button type="submit" class="btn btn-default">Submit</button>
               </form>
+
+
+            <div class="content">
             </div>
 
 
@@ -86,12 +92,12 @@
 
 
             <!-- Sign-Up Modal -->
-            <div class="modal fade" id="myModalUp" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="signUpModalLabel">
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Sign-Up</h4>
+                    <h4 class="modal-title" id="signUpModalLabel">Sign-Up</h4>
                   </div>
                   <div class="modal-body">
                     <form id="sign-up">
@@ -113,7 +119,7 @@
                       </div>
 
                       <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                      <button type="submit" class="btn btn-primary">Save changes</button>
+                      <button type="submit" class="btn btn-primary">Sign Up</button>
                     </form>
                   </div>
                   <div class="modal-footer">
@@ -123,12 +129,12 @@
             </div>
 
               <!-- Sign-In Modal-->
-              <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+              <div class="modal fade" id="signInModal" tabindex="-1" role="dialog" aria-labelledby="signInModalLabel">
                 <div class="modal-dialog" role="document">
                   <div class="modal-content">
                     <div class="modal-header">
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                      <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                      <h4 class="modal-title" id="signInModalLabel">Sign In</h4>
                     </div>
                     <div class="modal-body">
                       <form id="sign-in">
@@ -152,6 +158,36 @@
                 </div>
               </div>
 
-              <!--End of sign-in/up modals-->
+              <!-- Change Password Modal-->
+              <div class="modal fade" id="changePasswordModal" tabindex="-1" role="dialog" aria-labelledby="changePasswordModalLabel">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      <h4 class="modal-title" id="changePasswordModalLabel">Change Password</h4>
+                    </div>
+                    <div class="modal-body">
+                      <form id="change-password">
+                        <div class="form-group">
+                          <label for="exampleInputEmail1">Old Password</label>
+                          <input type="password" class="form-control" id="exampleInputEmail1" name="pw_creds[old]" placeholder="Old Password">
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleInputPassword1">New Password</label>
+                          <input type="password" class="form-control" id="exampleInputPassword1" name="pw_creds[new]" placeholder="New Password">
+                        </div>
+
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                      </form>
+                    </div>
+                    <div class="modal-footer">
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!--End of User CRUD modals-->
         </body>
 </html>

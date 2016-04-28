@@ -18,12 +18,18 @@ require('expose?jQuery!jquery');
 
 require('expose?getFormFields!./lib/get-form-fields.js');
 
-$('.open-signin').on('click', function(e){
-  e.preventDefault();
-  $('#myModal').modal('show');
-});
-
 $('.open-signup').on('click', function(e){
   e.preventDefault();
-  $('#myModalUp').modal('show');
+  $('#signUpModal').modal('show');
+});
+
+
+$('.open-signin').on('click', function(e){
+  e.preventDefault();
+  $('#signInModal').modal('show');
+});
+
+$('.password').on('click', function(event){
+  event.preventDefault();
+  $('#changePasswordModal').modal('show');
 });

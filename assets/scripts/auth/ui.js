@@ -2,9 +2,10 @@
 
 let currentUser = {
   token:'',
-  id: 0
+  id: 4
 };
 
+//User
 const signUpSuccess = (data) => {
   console.log('signed-up');
   console.log(data);
@@ -16,9 +17,23 @@ const signInSuccess = (data) => {
   currentUser.token = data.user.token;
   currentUser.id = data.user.id;
   console.log(currentUser);
-
 };
 
+const changePasswordSuccess = () => {
+  console.log('changed password');
+};
+
+const signOutSuccess = () => {
+  currentUser.token = '';
+  currentUser.id = 0;
+  console.log('signed out');
+};
+
+
+
+
+
+//Album
 const newAlbumSuccess = (data) => {
   console.log(data);
 };
@@ -33,6 +48,8 @@ const failure = (error) => {
 module.exports = {
   signUpSuccess,
   signInSuccess,
+  changePasswordSuccess,
+  signOutSuccess,
   newAlbumSuccess,
   failure,
   currentUser
