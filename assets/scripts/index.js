@@ -36,7 +36,7 @@ $('#change-password').on('submit', function(event){
 
 $('.sign-out').on('click', function(event){
   event.preventDefault();
-  authApi.signOut(authUi.signOutSuccess, authUi.failure)
+  authApi.signOut(authUi.signOutSuccess, authUi.failure);
 });
 
 
@@ -53,4 +53,4 @@ $('#new-album').on('submit', function(event){
 $('.albums').on('click', function(event){
   event.preventDefault();
   authApi.getAlbums();
-})
+});
