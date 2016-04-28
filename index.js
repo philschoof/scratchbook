@@ -23,7 +23,6 @@ $('.open-signup').on('click', function(e){
   $('#signUpModal').modal('show');
 });
 
-
 $('.open-signin').on('click', function(e){
   e.preventDefault();
   $('#signInModal').modal('show');

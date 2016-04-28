@@ -1,5 +1,7 @@
 
 {{#each albums}}
-  <h3>{{this}}</h3>
-  <h3>{{this.artist}}</h3>
+  {{#each this}}
+    <h3>{{this.title}}</h3>
+    <h3>{{this.artist}}</h3>
+  {{/each}}
 {{/each}}
