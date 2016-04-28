@@ -7,3 +7,35 @@
 
 
 require('./example');
+const authApi = require('./auth/api');
+require('./auth/events');
+const authUi = require('./auth/ui');
+
+
+$('#sign-up').on('submit', function (event){
+  console.log('click');
+  let data = getFormFields(this);
+  console.log(data);
+  event.preventDefault();
+  authApi.signUp(authUi.signUpSuccess, authUi.failure, data);
+});
+
+$('#sign-in').on('submit', function (event){
+  let data = getFormFields(this);
+  console.log(data);
+  event.preventDefault();
+  authApi.signIn(authUi.signInSuccess, authUi.failure, data);
+
+});
+
+$('#new-album').on('submit', function(event){
+  let data = getFormFields(this);
+  console.log(data);
+  event.preventDefault();
+  authApi.newAlbum(authUi.newAlbumSuccess, authUi.failure, data);
+});
+
+$('.albums').on('click', function(event){
+  event.preventDefault();
+  authApi.getAlbums();
+})

@@ -30,10 +30,10 @@
 
                   <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
-                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sign in/up <span class="caret"></span></a>
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sign up/in <span class="caret"></span></a>
                       <ul class="dropdown-menu">
-                        <li class="open-signin"><a href="#">Sign-in</a></li>
                         <li class="open-signup"><a href="#">Sign-up</a></li>
+                        <li class="open-signin"><a href="#">Sign-in</a></li>
 
                       </ul>
                     </li>
@@ -41,14 +41,88 @@
                 </div><!-- /.navbar-collapse -->
               </div><!-- /.container-fluid -->
               </nav>
-            <button class ="btn btn-success books">Button</button>
+            <button class ="btn btn-success albums">Button</button>
 
             <div class="content">
 
+              <form id="new-album">
+                <div class="form-group">
+                  <label for="title">Title</label>
+                  <input type="text" class="form-control" id="exampleInputEmail1" name="album[title]" placeholder="Title">
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputPassword1">Artist</label>
+                  <input type="text" class="form-control" id="exampleInputPassword1" name="album[artist]"placeholder="Artist">
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+              </form>
             </div>
 
 
-              <!-- Modal SignIn-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <!-- Sign-Up Modal -->
+            <div class="modal fade" id="myModalUp" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Sign-Up</h4>
+                  </div>
+                  <div class="modal-body">
+                    <form id="sign-up">
+                      <div class="form-group">
+                        <label for="exampleInputUsername">Username</label>
+                        <input type="text" class="form-control" id="exampleInputUsername" name="credentials[username]" placeholder="Username">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" name="credentials[email]" placeholder="Email">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputPassword1">Password</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1" name="credentials[password]" placeholder="Password">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputPassword2">Confirm Password</label>
+                        <input type="password" class="form-control" id="exampleInputPassword2" name="credentials[password_confirmation]" placeholder="Password">
+                      </div>
+
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                      <button type="submit" class="btn btn-primary">Save changes</button>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+              <!-- Sign-In Modal-->
               <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                 <div class="modal-dialog" role="document">
                   <div class="modal-content">
@@ -57,60 +131,22 @@
                       <h4 class="modal-title" id="myModalLabel">Modal title</h4>
                     </div>
                     <div class="modal-body">
-                      <form>
+                      <form id="sign-in">
                         <div class="form-group">
                           <label for="exampleInputEmail1">Email address</label>
-                          <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                          <input type="email" class="form-control" id="exampleInputEmail1" name="credentials[email]" placeholder="Email">
                         </div>
                         <div class="form-group">
                           <label for="exampleInputPassword1">Password</label>
-                          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                          <input type="password" class="form-control" id="exampleInputPassword1" name="credentials[password]" placeholder="Password">
                         </div>
 
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
                       </form>
                     </div>
                     <div class="modal-footer">
 
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-
-
-
-              <!-- Modal -->
-              <div class="modal fade" id="myModalUp" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                      <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-                    </div>
-                    <div class="modal-body">
-                      <form>
-                        <div class="form-group">
-                          <label for="exampleInputUsername">Username</label>
-                          <input type="email" class="form-control" id="exampleInputUsername" placeholder="Username">
-                        </div>
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Email address</label>
-                          <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
-                        </div>
-                        <div class="form-group">
-                          <label for="exampleInputPassword1">Password</label>
-                          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                        </div>
-
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                      </form>
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                      <button type="button" class="btn btn-primary">Save changes</button>
                     </div>
                   </div>
                 </div>
