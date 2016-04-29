@@ -107,9 +107,7 @@ let getAlbums = function(){
   });
 };
 
-//Update Albums
-let editAlbumId = 0;
-
+//Update Album
 const editAlbum = (success, failure, data) => {
   let album_id = localStorage.getItem('ID');
  $.ajax({
@@ -130,6 +128,20 @@ const editAlbum = (success, failure, data) => {
 };
 
 
+//Delete Album
+const deleteAlbum = (success, failure) => {
+  let album_id = localStorage.getItem('ID');
+  $.ajax({
+    method: 'DELETE',
+    url: app.api + 'albums/' + album_id,
+    headers: {
+      Authorization: 'Token token=' + ui.currentUser.token
+    },
+  }).done(success)
+  .fail(failure);
+};
+
+
 module.exports = {
   signUp,
   signIn,
@@ -138,8 +150,7 @@ module.exports = {
   newAlbum,
   getAlbums,
   displayAlbums,
-  editAlbumId,
   editAlbum,
-
+  deleteAlbum
 
 };

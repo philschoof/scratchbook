@@ -51,6 +51,10 @@ const editAlbumSuccess = (data) => {
   console.log(data);
 };
 
+const deleteAlbumSuccess = () => {
+  console.log('deleted');
+};
+
 
 const failure = (error) => {
   console.log("fail");
@@ -65,6 +69,7 @@ module.exports = {
   signOutSuccess,
   newAlbumSuccess,
   editAlbumSuccess,
+  deleteAlbumSuccess,
   failure,
   currentUser
 };

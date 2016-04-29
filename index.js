@@ -17,30 +17,3 @@ require('expose?jQuery!jquery');
 // attach getFormFields globally
 
 require('expose?getFormFields!./lib/get-form-fields.js');
-
-$('.open-signup').on('click', function(event){
-  event.preventDefault();
-  $('#signUpModal').modal('show');
-});
-
-$('.open-signin').on('click', function(event){
-  event.preventDefault();
-  $('#signInModal').modal('show');
-});
-
-$('.password').on('click', function(event){
-  event.preventDefault();
-  $('#changePasswordModal').modal('show');
-});
-
-// $('.edit-album').on('click', function(event){
-//   console.log('edit clicked')
-//   event.preventDefault();
-//   $('#editAlbumModal').modal('show');
-// });
-
-// $(document).on("click", ".edit-album", function(event){
-//   event.preventDefault();
-//   localStorage.setItem('ID', $(this).attr('data-attribute'));
-//   $('#editAlbumModal').modal('show');
-// });

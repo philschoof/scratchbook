@@ -210,7 +210,7 @@
                           <label for="exampleInputPassword1">Thoughts</label>
                           <textarea class="form-control" id="exampleInputPassword1" name="album[thoughts]" placeholder="Your Thoughts..." rows='3'></textarea>
                         </div>
-
+                        <button type="button" class="btn btn-danger delete-album-modal-button">Delete Album</button>
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Save changes</button>
                       </form>
@@ -221,6 +221,25 @@
                   </div>
                 </div>
               </div>
+
+              <!--Delete Album Modal-->
+              <div id="deleteAlbumModal" class="modal fade" tabindex="-1" role="dialog">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      <h4 class="modal-title">Delete Album</h4>
+                    </div>
+                    <div class="modal-body">
+                      <p>You Sure?</p>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-primary" id="deleteAlbumConfirm">Delete Album</button>
+                    </div>
+                  </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+              </div><!-- /.modal -->
 
 
               <!--End of User CRUD modals-->
