@@ -1,6 +1,10 @@
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
 
+.content {
+  padding: 25px;
+}
+
 .edit-album {
   font-size: 22px;
   list-style: none;

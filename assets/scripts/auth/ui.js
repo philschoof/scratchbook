@@ -2,13 +2,14 @@
 
 let currentUser = {
   token:'',
-  id: 4
+  id: undefined
 };
 
 //User
 const signUpSuccess = (data) => {
   console.log('signed-up');
   console.log(data);
+  $('#signUpModal').modal('hide');
 };
 
 const signInSuccess = (data) => {
@@ -17,6 +18,7 @@ const signInSuccess = (data) => {
   currentUser.token = data.user.token;
   currentUser.id = data.user.id;
   console.log(currentUser);
+  $('#signInModal').modal('hide');
 };
 
 const changePasswordSuccess = () => {
@@ -25,7 +27,7 @@ const changePasswordSuccess = () => {
 
 const signOutSuccess = () => {
   currentUser.token = '';
-  currentUser.id = 0;
+  currentUser.id = undefined;
   console.log('signed out');
 };
 

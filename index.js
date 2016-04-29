@@ -32,3 +32,14 @@ $('.password').on('click', function(event){
   event.preventDefault();
   $('#changePasswordModal').modal('show');
 });
+
+// $('.edit-album').on('click', function(event){
+//   console.log('edit clicked')
+//   event.preventDefault();
+//   $('#editAlbumModal').modal('show');
+// });
+
+$(document).on("click", ".edit-album", function(event){
+  event.preventDefault();
+  $('#editAlbumModal').modal('show');
+});
