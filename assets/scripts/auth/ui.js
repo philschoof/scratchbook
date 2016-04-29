@@ -27,12 +27,14 @@ const signInSuccess = (data) => {
 
 const changePasswordSuccess = () => {
   console.log('changed password');
+  $('#signInModal').modal('hide');
 };
 
 const signOutSuccess = () => {
   currentUser.token = '';
   currentUser.id = undefined;
   console.log('signed out');
+  $('#signInModal').modal('hide');
 };
 
 
@@ -49,10 +51,13 @@ const editAlbumSuccess = (data) => {
     localStorage.removeItem('ID');
   }
   console.log(data);
+  $('#signInModal').modal('hide');
 };
 
 const deleteAlbumSuccess = () => {
   console.log('deleted');
+  $('#deleteAlbumModal').modal('hide');
+  $('#editAlbumModal').modal('hide');
 };
 
 

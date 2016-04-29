@@ -82,7 +82,6 @@ $('.sign-out').on('click', function(event){
 //Albums
 $('#new-album').on('submit', function(event){
   let data = getFormFields(this);
-  console.log(data);
   event.preventDefault();
   authApi.newAlbum(authUi.newAlbumSuccess, authUi.failure, data);
 });
@@ -93,9 +92,3 @@ $('#deleteAlbumConfirm').on('click', function(event){
   event.preventDefault();
   authApi.deleteAlbum(authUi.deleteAlbumSuccess, authUi.failure, data);
 });
-
-
-
-module.exports = {
-  authApi,
-};
