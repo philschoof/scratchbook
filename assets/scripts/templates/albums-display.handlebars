@@ -2,7 +2,7 @@
 <ul>
 {{#each albums}}
   {{#each this}}
-    <div class="panel panel-default edit-album ">
+    <div class="panel panel-default edit-album" data-attribute={{this.id}}>
       <div class="panel-body">
         <li >
           <h3>{{this.title}}</h3>

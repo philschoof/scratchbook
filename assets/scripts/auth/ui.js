@@ -1,5 +1,9 @@
 'use strict';
 
+const authApi = require('./api');
+
+
+
 let currentUser = {
   token:'',
   id: undefined
@@ -14,11 +18,11 @@ const signUpSuccess = (data) => {
 
 const signInSuccess = (data) => {
   console.log('signed-in');
-  console.log(data);
   currentUser.token = data.user.token;
   currentUser.id = data.user.id;
   console.log(currentUser);
   $('#signInModal').modal('hide');
+  //authApi.getAlbums();
 };
 
 const changePasswordSuccess = () => {
@@ -40,6 +44,13 @@ const newAlbumSuccess = (data) => {
   console.log(data);
 };
 
+const editAlbumSuccess = (data) => {
+  if(localStorage.getItem('ID')){
+    localStorage.removeItem('ID');
+  }
+  console.log(data);
+};
+
 
 const failure = (error) => {
   console.log("fail");
@@ -53,6 +64,7 @@ module.exports = {
   changePasswordSuccess,
   signOutSuccess,
   newAlbumSuccess,
+  editAlbumSuccess,
   failure,
   currentUser
 };

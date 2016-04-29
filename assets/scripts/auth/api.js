@@ -84,9 +84,14 @@ let displayAlbums = function(albums){
     $('.content').append(albumsDisplayTemplate({
       albums
     }));
+    $('.edit-album').on('click', function() {
+    localStorage.setItem('ID', $(this).attr('data-attribute'));
+    $('#editAlbumModal').modal('show');
+  });
 };
 
 let getAlbums = function(){
+  console.log('inside');
   $.ajax({
     method: "GET",
     url: app.api + 'users/' + ui.currentUser.id + '/albums',
@@ -102,6 +107,28 @@ let getAlbums = function(){
   });
 };
 
+//Update Albums
+let editAlbumId = 0;
+
+const editAlbum = (success, failure, data) => {
+  let album_id = localStorage.getItem('ID');
+ $.ajax({
+   method: 'PATCH',
+   url: app.api + 'albums/' + album_id,
+   data: {
+     "album": {
+       "title": data.album.title,
+       "artist": data.album.artist,
+       "thoughts": data.album.thoughts,
+     }
+   },
+   headers:{
+     Authorization: "Token token=" + ui.currentUser.token,
+   }
+ }).done(success)
+ .fail(failure);
+};
+
 
 module.exports = {
   signUp,
@@ -110,6 +137,9 @@ module.exports = {
   signOut,
   newAlbum,
   getAlbums,
-  displayAlbums
+  displayAlbums,
+  editAlbumId,
+  editAlbum,
+
 
 };

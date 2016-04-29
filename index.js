@@ -18,13 +18,13 @@ require('expose?jQuery!jquery');
 
 require('expose?getFormFields!./lib/get-form-fields.js');
 
-$('.open-signup').on('click', function(e){
-  e.preventDefault();
+$('.open-signup').on('click', function(event){
+  event.preventDefault();
   $('#signUpModal').modal('show');
 });
 
-$('.open-signin').on('click', function(e){
-  e.preventDefault();
+$('.open-signin').on('click', function(event){
+  event.preventDefault();
   $('#signInModal').modal('show');
 });
 
@@ -39,7 +39,8 @@ $('.password').on('click', function(event){
 //   $('#editAlbumModal').modal('show');
 // });
 
-$(document).on("click", ".edit-album", function(event){
-  event.preventDefault();
-  $('#editAlbumModal').modal('show');
-});
+// $(document).on("click", ".edit-album", function(event){
+//   event.preventDefault();
+//   localStorage.setItem('ID', $(this).attr('data-attribute'));
+//   $('#editAlbumModal').modal('show');
+// });

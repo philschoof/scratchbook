@@ -50,7 +50,20 @@ $('#new-album').on('submit', function(event){
   authApi.newAlbum(authUi.newAlbumSuccess, authUi.failure, data);
 });
 
+//To open the edit modal
 $('.albums').on('click', function(event){
   event.preventDefault();
   authApi.getAlbums();
 });
+
+$('#edit-album-form').on('submit', function(event){
+  event.preventDefault();
+  // let editAlbumId = $(this).attr('data-attribute').data();
+  let data = getFormFields(this);
+  // console.log(data, editAlbumId);
+  authApi.editAlbum(authUi.editAlbumSuccess, authUi.failure, data);
+});
+
+module.exports = {
+  authApi,
+};
