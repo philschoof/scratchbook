@@ -7,6 +7,7 @@
       <script src="bundle.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body class="container-fluid">
+      <!--navbar-->
       <nav class="navbar navbar-default">
         <div class="container-fluid">
           <!-- Brand and toggle get grouped for better mobile display -->
@@ -30,7 +31,6 @@
                         <li class="open-signin"><a href="#">Sign-in</a></li>
                         <li class="open-change-password"><a href="#">Change Password</a></li>
                         <li class="sign-out"><a href="#">Sign-Out</a></li>
-
                       </ul>
                     </li>
                   </ul>
@@ -38,17 +38,10 @@
               </div><!-- /.container-fluid -->
               </nav>
 
-
-
-
           <div class="container">
 
-
-
-
-
-
             <div class="content">
+
             </div>
 
 
@@ -62,21 +55,7 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+          <!--Modal bodies-->
 
             <!-- Sign-Up Modal -->
             <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="signUpModalLabel">
@@ -89,20 +68,20 @@
                   <div class="modal-body">
                     <form id="sign-up">
                       <div class="form-group">
-                        <label for="exampleInputUsername">Username</label>
-                        <input type="text" class="form-control" id="exampleInputUsername" name="credentials[username]" placeholder="Username">
+                        <label for="signUpUsername">Username</label>
+                        <input type="text" class="form-control" id="signUpUsername" name="credentials[username]" placeholder="Username">
                       </div>
                       <div class="form-group">
-                        <label for="exampleInputEmail1">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" name="credentials[email]" placeholder="Email">
+                        <label for="signUpEmail">Email address</label>
+                        <input type="email" class="form-control" id="signUpEmail" name="credentials[email]" placeholder="Email">
                       </div>
                       <div class="form-group">
-                        <label for="exampleInputPassword1">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" name="credentials[password]" placeholder="Password">
+                        <label for="signUpPassword1">Password</label>
+                        <input type="password" class="form-control" id="signUpPassword1" name="credentials[password]" placeholder="Password">
                       </div>
                       <div class="form-group">
-                        <label for="exampleInputPassword2">Confirm Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword2" name="credentials[password_confirmation]" placeholder="Password">
+                        <label for="signUpPassword2">Confirm Password</label>
+                        <input type="password" class="form-control" id="signUpPassword2" name="credentials[password_confirmation]" placeholder="Password">
                       </div>
 
                       <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -126,16 +105,16 @@
                     <div class="modal-body">
                       <form id="sign-in">
                         <div class="form-group">
-                          <label for="exampleInputEmail1">Email address</label>
-                          <input type="email" class="form-control" id="exampleInputEmail1" name="credentials[email]" placeholder="Email">
+                          <label for="signInEmail">Email address</label>
+                          <input type="email" class="form-control" id="signInEmail" name="credentials[email]" placeholder="Email">
                         </div>
                         <div class="form-group">
-                          <label for="exampleInputPassword1">Password</label>
-                          <input type="password" class="form-control" id="exampleInputPassword1" name="credentials[password]" placeholder="Password">
+                          <label for="signInPassword">Password</label>
+                          <input type="password" class="form-control" id="signInPassword" name="credentials[password]" placeholder="Password">
                         </div>
 
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Save changes</button>
+                        <button type="submit" class="btn btn-primary">Sign In</button>
                       </form>
                     </div>
                     <div class="modal-footer">
@@ -156,16 +135,16 @@
                     <div class="modal-body">
                       <form id="change-password">
                         <div class="form-group">
-                          <label for="exampleInputEmail1">Old Password</label>
-                          <input type="password" class="form-control" id="exampleInputEmail1" name="pw_creds[old]" placeholder="Old Password">
+                          <label for="changePassword1">Old Password</label>
+                          <input type="password" class="form-control" id="changePassword1" name="pw_creds[old]" placeholder="Old Password">
                         </div>
                         <div class="form-group">
-                          <label for="exampleInputPassword1">New Password</label>
-                          <input type="password" class="form-control" id="exampleInputPassword1" name="pw_creds[new]" placeholder="New Password">
+                          <label for="changePassword2">New Password</label>
+                          <input type="password" class="form-control" id="changePassword2" name="pw_creds[new]" placeholder="New Password">
                         </div>
 
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Save changes</button>
+                        <button type="submit" class="btn btn-primary">Change Password</button>
                       </form>
                     </div>
                     <div class="modal-footer">
@@ -186,18 +165,18 @@
                       <div class="modal-body">
                         <form id="new-album">
                           <div class="form-group">
-                            <label for="title">Title</label>
-                            <input type="text" class="form-control" id="exampleInputEmail1" name="album[title]" placeholder="Title">
+                            <label for="newAlbumTitle">Title</label>
+                            <input type="text" class="form-control" id="newAlbumTitle" name="album[title]" placeholder="Title">
                           </div>
                           <div class="form-group">
-                            <label for="exampleInputPassword1">Artist</label>
-                            <input type="text" class="form-control" id="exampleInputPassword1" name="album[artist]"placeholder="Artist">
+                            <label for="newAlbumArtist">Artist</label>
+                            <input type="text" class="form-control" id="newAlbumArtist" name="album[artist]"placeholder="Artist">
                           </div>
                           <div class="form-group">
-                            <label for="exampleInputPassword1">Thoughts</label>
-                            <textarea class="form-control" id="exampleInputPassword1" name="album[thoughts]" placeholder="Your Thoughts..." rows='3'></textarea>
+                            <label for="newAlbumThoughts">Thoughts</label>
+                            <textarea class="form-control" id="newAlbumThoughts" name="album[thoughts]" placeholder="Your Thoughts..." rows='3'></textarea>
                           </div>
-                          <button type="submit" class="btn btn-default">Submit</button>
+                          <button type="submit" class="btn btn-default">Add New Album</button>
                         </form>
                       </div>
                       <div class="modal-footer">
@@ -208,33 +187,33 @@
 
 
               <!-- Edit Album Modal-->
-              <div class="modal fade" id="editAlbumModal" tabindex="-1" role="dialog" aria-labelledby="editAlbumModalLabel">
-                <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                      <h4 class="modal-title" id="editAlbumModal">Edit Album</h4>
-                    </div>
-                    <div class="modal-body">
-                      <form id="edit-album-form">
-                        <div class="form-group">
-                          <label for="editAlbumTitle">Title</label>
-                          <input type="text" class="form-control" id="editAlbumTitle" name="album[title]">
-                        </div>
-                        <div class="form-group">
-                          <label for="editAlbumArtist">Artist</label>
-                          <input type="text" class="form-control" id="editAlbumArtist" name="album[artist]" placeholder="Artist">
-                        </div>
-                        <div class="form-group">
-                          <label for="editAblumThoughts">Thoughts</label>
-                          <textarea class="form-control" id="editAlbumThoughts" name="album[thoughts]" placeholder="Your Thoughts..." rows='3' value=""></textarea>
-                        </div>
-                        <button type="button" class="btn btn-danger delete-album-modal-button">Delete Album</button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Save changes</button>
-                      </form>
-                    </div>
-                    <div class="modal-footer">
+                <div class="modal fade" id="editAlbumModal" tabindex="-1" role="dialog" aria-labelledby="editAlbumModalLabel">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="editAlbumModal">Edit Album</h4>
+                      </div>
+                      <div class="modal-body">
+                        <form id="edit-album-form">
+                          <div class="form-group">
+                            <label for="editAlbumTitle">Title</label>
+                            <input type="text" class="form-control" id="editAlbumTitle" name="album[title]">
+                          </div>
+                          <div class="form-group">
+                            <label for="editAlbumArtist">Artist</label>
+                            <input type="text" class="form-control" id="editAlbumArtist" name="album[artist]" placeholder="Artist">
+                          </div>
+                          <div class="form-group">
+                            <label for="editAblumThoughts">Thoughts</label>
+                            <textarea class="form-control" id="editAlbumThoughts" name="album[thoughts]" placeholder="Your Thoughts..." rows='3' value=""></textarea>
+                          </div>
+                          <button type="button" class="btn btn-danger delete-album-modal-button">Delete Album</button>
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                          <button type="submit" class="btn btn-primary">Save changes</button>
+                        </form>
+                      </div>
+                      <div class="modal-footer">
 
                     </div>
                   </div>
@@ -261,7 +240,7 @@
               </div><!-- /.modal -->
 
 
-              <!--End of User CRUD modals-->
-            </div>
+            <!--End of Modals-->
+          </div><!--close container-->
         </body>
 </html>

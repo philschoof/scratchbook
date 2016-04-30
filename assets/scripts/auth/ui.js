@@ -88,7 +88,9 @@ const changePasswordSuccess = () => {
 const signOutSuccess = () => {
   currentUser.token = '';
   currentUser.id = undefined;
+  //show/hide user CRUD options and clear albums + username
   $('.content').html('');
+  $('.navbar-brand').text('');
   console.log('signed out');
   $('.open-signup').show();
   $('.open-signin').show();
