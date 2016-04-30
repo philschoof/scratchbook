@@ -35,11 +35,6 @@ $('.delete-album-modal-button').on('click', function(event) {
 
 //open-new-album modal is in auth/ui.displayAlbums
 
-//Edit modal
-$('.albums').on('click', function(event){
-  event.preventDefault();
-  authApi.getAlbums();
-});
 
 $('#edit-album-form').on('submit', function(event){
   event.preventDefault();

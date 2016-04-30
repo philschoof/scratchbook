@@ -17,17 +17,11 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Library</a>
+            <div class="navbar-brand"></div>
           </div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                  <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Books <span class="sr-only">(current)</span></a></li>
-                    <li><a href="#">Users</a></li>
-
-                  </ul>
-
                   <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">
                       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sign up/in <span class="caret"></span></a>
@@ -49,7 +43,7 @@
 
           <div class="container">
 
-            
+
 
 
 
@@ -224,16 +218,16 @@
                     <div class="modal-body">
                       <form id="edit-album-form">
                         <div class="form-group">
-                          <label for="exampleInputEmail1">Title</label>
-                          <input type="text" class="form-control" id="exampleInputEmail1" name="album[title]" placeholder="Title">
+                          <label for="editAlbumTitle">Title</label>
+                          <input type="text" class="form-control" id="editAlbumTitle" name="album[title]">
                         </div>
                         <div class="form-group">
-                          <label for="exampleInputPassword1">Artist</label>
-                          <input type="text" class="form-control" id="exampleInputPassword1" name="album[artist]" placeholder="Artist">
+                          <label for="editAlbumArtist">Artist</label>
+                          <input type="text" class="form-control" id="editAlbumArtist" name="album[artist]" placeholder="Artist">
                         </div>
                         <div class="form-group">
-                          <label for="exampleInputPassword1">Thoughts</label>
-                          <textarea class="form-control" id="exampleInputPassword1" name="album[thoughts]" placeholder="Your Thoughts..." rows='3'></textarea>
+                          <label for="editAblumThoughts">Thoughts</label>
+                          <textarea class="form-control" id="editAlbumThoughts" name="album[thoughts]" placeholder="Your Thoughts..." rows='3' value=""></textarea>
                         </div>
                         <button type="button" class="btn btn-danger delete-album-modal-button">Delete Album</button>
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

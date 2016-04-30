@@ -122,8 +122,6 @@ module.exports = {
   changePassword,
   signOut,
   newAlbum,
-  // getAlbums,
-  // displayAlbums,
   editAlbum,
   deleteAlbum
 

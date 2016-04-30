@@ -6,7 +6,8 @@ const app = require('../app-data');
 //currentUser object set on successful sign-in
 let currentUser = {
   token:'',
-  id: undefined
+  id: undefined,
+  username: undefined
 };
 
 
@@ -20,22 +21,26 @@ let displayAlbums = function(albums){
       albums
     }));
     $('.edit-album').on('click', function() {
-    localStorage.setItem('ID', $(this).attr('data-attribute'));
-    $('#editAlbumModal').modal('show');
-    });
+      //load clicked album ID from data-attribute into local storage for use in auth/api.editAlbum call
+      localStorage.setItem('ID', $(this).attr('data-attribute'));
+      //sets value of 'edit album' fields so that they don't default to empty
+      $('#editAlbumTitle').attr('value', $(this).find('.album-title').text());
+      $('#editAlbumArtist').attr('value', $(this).find('.album-artist').text());
+      $('#editAlbumThoughts').attr('value', $(this).find('.album-thoughts').text());
+      $('#editAlbumModal').modal('show');
+      });
     $('.open-new-album').on('click', function(event){
       event.preventDefault();
       $('#newAlbumModal').modal('show');
   });
 };
 
+
 //Read albums
 let getAlbums = function(){
-  console.log('inside');
   $.ajax({
     method: "GET",
     url: app.api + 'users/' + currentUser.id + '/albums',
-    // method: 'GET',
     dataType: 'json',
     headers: {
       Authorization: "Token token=" + currentUser.token
@@ -60,13 +65,18 @@ const signUpSuccess = (data) => {
 
 const signInSuccess = (data) => {
   console.log('signed-in');
+  console.log(data);
   currentUser.token = data.user.token;
   currentUser.id = data.user.id;
+  currentUser.username = data.user.username;
+  $('.navbar-brand').text(currentUser.username);
+  //show/hide user CRUD options
   $('#signInModal').modal('hide');
   $('.open-signup').hide();
   $('.open-signin').hide();
   $('.open-change-password').show();
   $('.sign-out').show();
+  //display user's albums on sign-in
   getAlbums();
   };
 
