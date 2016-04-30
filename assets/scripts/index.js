@@ -89,3 +89,7 @@ $('#deleteAlbumConfirm').on('click', function(event){
   event.preventDefault();
   authApi.deleteAlbum(authUi.deleteAlbumSuccess, authUi.failure, data);
 });
+
+
+//background image fitting
+$('body').css('height', $(window).height);

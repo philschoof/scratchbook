@@ -2,7 +2,8 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
 
 body {
-  background: #EEE;
+  background: url('https://images.unsplash.com/photo-1461360228754-6e81c478b882?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=380f3a7f89d8679195123a4e3245791b') no-repeat center center fixed;
+  background-size: cover;
   color: #444;
   font-size: 18px;
   line-height: 1.6;
@@ -26,4 +27,19 @@ body {
 .open-change-password,
 .sign-out {
   display: none;
+}
+
+.album-artist {
+  text-decoration: underline;
+}
+
+.album-thoughts {
+  border-left: 2px solid black;
+  margin-top: 50px;
+  padding-left: 15px;
+}
+
+.dropdown-toggle {
+  border-radius: 5%;
+  transition: .2s ease;
 }
