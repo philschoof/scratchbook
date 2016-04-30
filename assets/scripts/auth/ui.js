@@ -15,7 +15,7 @@ let currentUser = {
 
 //displayAlbums function used in getAlbums api call. Passes albums object to handlebars
 let displayAlbums = function(albums){
-    $('.content').html('');
+    $('.landing-div').hide();
   let albumsDisplayTemplate = require('../templates/albums-display.handlebars');
     $('.content').append(albumsDisplayTemplate({
       albums
@@ -75,6 +75,8 @@ const signInSuccess = (data) => {
   $('#dropdown').show();
   //display user's albums on sign-in
   getAlbums();
+  //change background
+  $('body').addClass('signed-in-background');
   };
 
 const changePasswordSuccess = () => {
@@ -86,12 +88,13 @@ const signOutSuccess = () => {
   currentUser.token = '';
   currentUser.id = undefined;
   //show/hide user CRUD options and clear albums + username
+  $('body').removeClass('signed-in-background');
   $('.content').html('');
+  $('.landing-div').show();
   $('.dropdown-toggle').text('Sign In');
   console.log('signed out');
-  $('.open-signin').show();
-  $('.open-change-password').hide();
-  $('.sign-out').hide();
+  $('#dropdown').hide();
+
 };
 
 

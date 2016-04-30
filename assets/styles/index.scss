@@ -14,6 +14,10 @@ body {
   padding: 10px;
 }
 
+.signed-in-background {
+  background: url('https://images.unsplash.com/photo-1444990689320-bd2a7a839644?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=4c7cfe1fefafc94b44fc477725ab1ca3') no-repeat center center fixed;
+}
+
 .container {
   margin: 40px auto;
   max-width: 960px;
