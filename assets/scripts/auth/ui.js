@@ -89,6 +89,8 @@ const signOutSuccess = () => {
 //Album
 const newAlbumSuccess = (data) => {
   console.log(data);
+  $('#newAlbumModal').modal('hide');
+  getAlbums();
 };
 
 const editAlbumSuccess = (data) => {
@@ -96,13 +98,15 @@ const editAlbumSuccess = (data) => {
     localStorage.removeItem('ID');
   }
   console.log(data);
-  $('#signInModal').modal('hide');
+  $('#editAlbumModal').modal('hide');
+  getAlbums();
 };
 
 const deleteAlbumSuccess = () => {
   console.log('deleted');
   $('#deleteAlbumModal').modal('hide');
   $('#editAlbumModal').modal('hide');
+  getAlbums();
 };
 
 
