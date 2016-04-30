@@ -38,9 +38,7 @@ $('.delete-album-modal-button').on('click', function(event) {
 
 $('#edit-album-form').on('submit', function(event){
   event.preventDefault();
-  // let editAlbumId = $(this).attr('data-attribute').data();
   let data = getFormFields(this);
-  // console.log(data, editAlbumId);
   authApi.editAlbum(authUi.editAlbumSuccess, authUi.failure, data);
 });
 
@@ -89,7 +87,3 @@ $('#deleteAlbumConfirm').on('click', function(event){
   event.preventDefault();
   authApi.deleteAlbum(authUi.deleteAlbumSuccess, authUi.failure, data);
 });
-
-
-//background image fitting
-$('body').css('height', $(window).height);

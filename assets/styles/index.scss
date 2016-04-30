@@ -1,13 +1,17 @@
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
+$off-white: #c3c3c3;
+$grey: #444444;
 
 body {
   background: url('https://images.unsplash.com/photo-1461360228754-6e81c478b882?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=380f3a7f89d8679195123a4e3245791b') no-repeat center center fixed;
+  //background: url('https://images.unsplash.com/photo-1444990689320-bd2a7a839644?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=4c7cfe1fefafc94b44fc477725ab1ca3') no-repeat center center fixed;
+  //background: url('https://images.unsplash.com/uploads/1412282232015a06e258a/4bdd2a58?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=282ba438bc6235c8139ab6619e720d99') no-repeat center center fixed;
   background-size: cover;
   color: #444;
   font-size: 18px;
   line-height: 1.6;
-  padding: 0 10px;
+  padding: 10px;
 }
 
 .container {
@@ -19,15 +23,86 @@ body {
   padding: 25px;
 }
 
+.landing-div {
+  background: $off-white;
+  border-radius: 5%;
+  color: #111111;
+  display: hidden;
+  margin: 0 auto;
+  padding: 25px;
+  position: relative;
+  text-align: center;
+  top: 150px;
+  width:250px;
+}
+
+.landing-div h1{
+  font-size: 42px;
+}
+
+.navbar-brand {
+  color:#f5f5f5;
+}
+
+.dropdown-toggle,
+.dropdown-menu {
+  border-radius: 5%;
+  transition: .2s ease;
+}
+
+
+
+.dropdown-menu {
+  text-align: right;
+  width: 40px;
+}
+
+.dropdown-menu:hover .navbar-right{
+  color: #428bca
+}
+
+.navbar-right {
+  border: 1px solid white;
+  border-radius: 5%;
+  color: #000;
+  transition: .2s ease;
+}
+
 .edit-album {
   font-size: 18px;
   list-style: none;
 }
 
-.open-change-password,
-.sign-out {
+#dropdown {
   display: none;
 }
+
+
+
+
+//
+// .navbar-right a{
+//   color: #f5f5f5;
+// }
+//
+// .navbar-right a:hover{
+//   color: #428bca;
+// }
+
+// Handlebars
+.panel {
+
+}
+
+.panel-body {
+  background: #f5f5f5;
+  color:#444;
+}
+
+// .panel-body {
+//   background: #444;
+//   color:#f5f5f5;
+// }
 
 .album-artist {
   text-decoration: underline;
@@ -35,11 +110,6 @@ body {
 
 .album-thoughts {
   border-left: 2px solid black;
-  margin-top: 50px;
-  padding-left: 15px;
-}
-
-.dropdown-toggle {
-  border-radius: 5%;
-  transition: .2s ease;
+  margin: 50px 0 20px 0;
+  padding-left: 10px;
 }

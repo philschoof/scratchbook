@@ -7,10 +7,12 @@
 </div>
   {{#each this}}
 
-    <div class="panel panel-default edit-album" data-attribute={{this.id}}>
+    <div class="panel panel-inverse edit-album" data-attribute={{this.id}}>
       <div class="panel-body">
+          <h5 class="album-date">{{this.created_at}}</h5>
           <h3 class="album-title">{{this.title}}</h3>
           <h4 class="album-artist">{{this.artist}}</h4>
+          <div class="album-thoughts">{{this.thoughts}}</div>
           {{#if this.cover}}
             <div class="album-cover">
               <img scr=''>
@@ -19,7 +21,7 @@
           {{#if this.description}}
             <div class="album-description"></div>
           {{/if}}
-          <div class="album-thoughts">{{this.thoughts}}</div>
+
       </div>
     </div>
   {{/each}}

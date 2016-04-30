@@ -8,7 +8,7 @@
     </head>
     <body class="container-fluid">
       <!--navbar-->
-      <nav class="navbar">
+        <nav class="navbar navbar-default">
         <div class="container-fluid">
           <!-- Brand and toggle get grouped for better mobile display -->
           <div class="navbar-header">
@@ -18,31 +18,34 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <div class="navbar-brand"></div>
+            <a class="navbar-brand" href="#"></a>
           </div>
-
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                  <ul class="nav navbar-nav navbar-right">
-                    <li class="dropdown">
-                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sign up/in <span class="caret"></span></a>
-                      <ul class="dropdown-menu">
-                        <li class="open-signup"><a href="#">Sign-up</a></li>
-                        <li class="open-signin"><a href="#">Sign-in</a></li>
-                        <li class="open-change-password"><a href="#">Change Password</a></li>
-                        <li class="sign-out"><a href="#">Sign-Out</a></li>
-                      </ul>
-                    </li>
-                  </ul>
-                </div><!-- /.navbar-collapse -->
-              </div><!-- /.container-fluid -->
-              </nav>
+              <!-- Collect the nav links, forms, and other content for toggling -->
+              <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                  <li id="dropdown" class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                      <li class="open-change-password"><a href="#">Change Password</a></li>
+                      <li class="sign-out"><a href="#">Sign-Out</a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+            </nav>
 
           <div class="container">
 
             <div class="content">
 
-            </div>
+              <div class="landing-div">
+                  <h1>Welcome</h1>
+                  <button class="btn btn-default open-signup">First time here?</button>
+                  <button class="btn btn-default open-signin">Been here before?</button>
+              </div><!--close landing-div -->
+
+            </div><!-- close content-->
 
 
 
@@ -66,6 +69,7 @@
                     <h4 class="modal-title" id="signUpModalLabel">Sign-Up</h4>
                   </div>
                   <div class="modal-body">
+                    <p>This website is designed to be a musical scrapbook</p>
                     <form id="sign-up">
                       <div class="form-group">
                         <label for="signUpUsername">Username</label>
