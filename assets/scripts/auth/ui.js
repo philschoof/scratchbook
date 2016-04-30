@@ -1,13 +1,50 @@
 'use strict';
 
 const authApi = require('./api');
-
+const app = require('../app-data');
 
 
 let currentUser = {
   token:'',
   id: undefined
 };
+
+
+
+//displayAlbums function used in getAlbums api call. Passes albums object to handlebars
+let displayAlbums = function(albums){
+    $('.content').html('');
+  let albumsDisplayTemplate = require('../templates/albums-display.handlebars');
+    $('.content').append(albumsDisplayTemplate({
+      albums
+    }));
+    $('.edit-album').on('click', function() {
+    localStorage.setItem('ID', $(this).attr('data-attribute'));
+    $('#editAlbumModal').modal('show');
+  });
+};
+
+//Read albums
+let getAlbums = function(){
+  console.log('inside');
+  $.ajax({
+    method: "GET",
+    url: app.api + 'users/' + currentUser.id + '/albums',
+    // method: 'GET',
+    dataType: 'json',
+    headers: {
+      Authorization: "Token token=" + currentUser.token
+    }
+  }).done(function(albums){
+    console.log(albums);
+    displayAlbums(albums);
+
+  });
+};
+
+
+//API outcomes
+
 
 //User
 const signUpSuccess = (data) => {
@@ -16,15 +53,16 @@ const signUpSuccess = (data) => {
   $('#signUpModal').modal('hide');
 };
 
-const signInSuccess = (data, getAlbums) => {
+const signInSuccess = (data) => {
   console.log('signed-in');
   currentUser.token = data.user.token;
   currentUser.id = data.user.id;
   console.log(currentUser);
   $('#signInModal').modal('hide');
   getAlbums();
+  };
 
-};
+
 
 const changePasswordSuccess = () => {
   console.log('changed password');

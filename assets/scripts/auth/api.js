@@ -14,13 +14,13 @@ const signUp = (success, failure, data) => {
   .fail(failure);
 };
 
-const signIn = (success, getAlbums, failure, data) => {
+const signIn = (success, failure, data) => {
   $.ajax({
     method: 'POST',
     url: app.api + 'sign-in',
     data,
   })
-  .done(success, getAlbums)
+  .done(success)
   .fail(failure);
 };
 
@@ -77,35 +77,8 @@ const newAlbum = (success, failure, data) => {
   .fail(failure);
 };
 
-//Read albums
-let displayAlbums = function(albums){
-    $('.content').html('');
-  let albumsDisplayTemplate = require('../templates/albums-display.handlebars');
-    $('.content').append(albumsDisplayTemplate({
-      albums
-    }));
-    $('.edit-album').on('click', function() {
-    localStorage.setItem('ID', $(this).attr('data-attribute'));
-    $('#editAlbumModal').modal('show');
-  });
-};
+//Read albums is attached to sign-in succes in auth/ui
 
-let getAlbums = function(){
-  console.log('inside');
-  $.ajax({
-    method: "GET",
-    url: app.api + 'users/' + ui.currentUser.id + '/albums',
-    // method: 'GET',
-    dataType: 'json',
-    headers: {
-      Authorization: "Token token=" + ui.currentUser.token
-    }
-  }).done(function(albums){
-    console.log(albums);
-    displayAlbums(albums);
-
-  });
-};
 
 //Update Album
 const editAlbum = (success, failure, data) => {
@@ -148,8 +121,8 @@ module.exports = {
   changePassword,
   signOut,
   newAlbum,
-  getAlbums,
-  displayAlbums,
+  // getAlbums,
+  // displayAlbums,
   editAlbum,
   deleteAlbum
 
