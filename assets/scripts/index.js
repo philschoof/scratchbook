@@ -33,14 +33,15 @@ $('.delete-album-modal-button').on('click', function(event) {
   $('#deleteAlbumModal').modal('show');
 });
 
+$('.album-cover-modal').on('click', function(event) {
+  event.preventDefault();
+  $('#albumCoverModal').modal('show');
+});
+
 //open-new-album modal is in auth/ui.displayAlbums
 
 
-$('#edit-album-form').on('submit', function(event){
-  event.preventDefault();
-  let data = getFormFields(this);
-  authApi.editAlbum(authUi.editAlbumSuccess, authUi.failure, data);
-});
+
 
 
 //Users
@@ -79,6 +80,20 @@ $('#new-album').on('submit', function(event){
   let data = getFormFields(this);
   event.preventDefault();
   authApi.newAlbum(authUi.newAlbumSuccess, authUi.failure, data);
+});
+
+$('#edit-album-form').on('submit', function(event){
+  event.preventDefault();
+  let data = getFormFields(this);
+  authApi.editAlbum(authUi.editAlbumSuccess, authUi.failure, data);
+});
+
+$('#album-cover-form').on('submit', function(event){
+  let data = getFormFields(this);
+  console.log(data);
+  console.log('index');
+  event.preventDefault();
+  authApi.getAlbumCover(authApi.albumCoverSuccess, authUi.failure, data);
 });
 
 $('#deleteAlbumConfirm').on('click', function(event){

@@ -3,6 +3,7 @@
 const app = require('../app-data');
 const ui = require('./ui');
 
+
 //User CRUD
 const signUp = (success, failure, data) => {
   $.ajax({
@@ -91,7 +92,7 @@ const editAlbum = (success, failure, data) => {
      "album": {
        "title": data.album.title,
        "artist": data.album.artist,
-       "thoughts": data.album.thoughts,
+       "thoughts": data.album.thoughts
      }
    },
    headers:{
@@ -115,6 +116,49 @@ const deleteAlbum = (success, failure) => {
   .fail(failure);
 };
 
+//function to adjust user input to api naming conventions
+let prepareData = function(name){
+  name = name.split(' ');
+  name = name.join('+');
+  return name;
+};
+
+const getAlbumCover = (success, failure, data) => {
+  console.log(data);
+  console.log('api getAlbumCover');
+  let preparedArtist = prepareData(data.album.artist);
+  let preparedAlbum = prepareData(data.album.title);
+  $.ajax({
+    url: 'http://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=507b5d03b9f50c1d266bde3a5ef48fe0&artist=' + preparedArtist + '&album=' + preparedAlbum + '&format=json'
+  }).done(success)
+  .fail(failure);
+};
+
+const albumCoverPatch = (success, failure, data) => {
+  let album_id = localStorage.getItem('ID');
+ $.ajax({
+   method: 'PATCH',
+   url: app.api + 'albums/' + album_id,
+   data: {
+     "album": {
+       "cover": data,
+     }
+   },
+   headers:{
+     Authorization: "Token token=" + ui.currentUser.token,
+   }
+ }).done(success)
+ .fail(failure);
+};
+
+const albumCoverSuccess = (data) => {
+  console.log('cover success');
+  let albumCoverValue = data.album.image[3]['#text'];
+  albumCoverPatch(ui.editAlbumSuccess, ui.failure, albumCoverValue);
+};
+
+
+
 
 module.exports = {
   signUp,
@@ -123,6 +167,9 @@ module.exports = {
   signOut,
   newAlbum,
   editAlbum,
-  deleteAlbum
+  deleteAlbum,
+  getAlbumCover,
+  albumCoverSuccess,
+  albumCoverPatch
 
 };

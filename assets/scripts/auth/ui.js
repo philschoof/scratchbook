@@ -16,23 +16,30 @@ let currentUser = {
 //displayAlbums function used in getAlbums api call. Passes albums object to handlebars
 let displayAlbums = function(albums){
     $('.landing-div').hide();
+    $('.content').html('');
   let albumsDisplayTemplate = require('../templates/albums-display.handlebars');
     $('.content').append(albumsDisplayTemplate({
       albums
     }));
+    //when album panel is clicked to open edit modal
     $('.edit-album').on('click', function() {
       //load clicked album ID from data-attribute into local storage for use in auth/api.editAlbum call
       localStorage.setItem('ID', $(this).attr('data-attribute'));
       //sets value of 'edit album' fields so that they don't default to empty
-      $('#editAlbumTitle').attr('value', $(this).find('.album-title').text());
-      $('#editAlbumArtist').attr('value', $(this).find('.album-artist').text());
-      $('#editAlbumThoughts').attr('value', $(this).find('.album-thoughts').text());
+      $('#editAlbumTitle').val($(this).find('.album-title').text());
+      $('#editAlbumArtist').val($(this).find('.album-artist').text());
+      $('#editAlbumThoughts').val($(this).find('.album-thoughts').text());
       $('#editAlbumModal').modal('show');
+      //adds album info to wiki album fields
+      $('#albumCoverTitle').val($(this).find('.album-title').text());
+      $('#albumCoverArtist').val($(this).find('.album-artist').text());
       });
+    //shows add album modal
     $('.open-new-album').on('click', function(event){
       event.preventDefault();
       $('#newAlbumModal').modal('show');
   });
+
 };
 
 
@@ -61,6 +68,8 @@ const signUpSuccess = (data) => {
   console.log('signed-up');
   console.log(data);
   $('#signUpModal').modal('hide');
+  $('.open-signup').hide();
+  $('.open-signin').text('Come on in');
 };
 
 const signInSuccess = (data) => {
@@ -72,6 +81,7 @@ const signInSuccess = (data) => {
   $('.dropdown-toggle').text(currentUser.username);
   //show/hide user CRUD options
   $('#signInModal').modal('hide');
+  $('landing-div').hide();
   $('#dropdown').show();
   //display user's albums on sign-in
   getAlbums();
@@ -113,6 +123,8 @@ const editAlbumSuccess = () => {
     localStorage.removeItem('ID');
   }
   $('#editAlbumModal').modal('hide');
+  $('#albumCoverModal').modal('hide');
+  console.log('looks like we made it');
   getAlbums();
 };
 
@@ -122,6 +134,8 @@ const deleteAlbumSuccess = () => {
   $('#editAlbumModal').modal('hide');
   getAlbums();
 };
+
+
 
 
 const failure = (error) => {
