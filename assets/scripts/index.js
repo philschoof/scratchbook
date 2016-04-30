@@ -23,7 +23,7 @@ $('.open-signin').on('click', function(event){
   $('#signInModal').modal('show');
 });
 
-$('.password').on('click', function(event){
+$('.open-change-password').on('click', function(event){
   event.preventDefault();
   $('#changePasswordModal').modal('show');
 });

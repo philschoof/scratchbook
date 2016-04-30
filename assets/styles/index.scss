@@ -11,3 +11,8 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
   text-decoration: underline;
   text-transform: capitalize;
 }
+
+.open-change-password,
+.sign-out {
+  display: none;
+}

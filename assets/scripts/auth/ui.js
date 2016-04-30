@@ -3,11 +3,12 @@
 const authApi = require('./api');
 const app = require('../app-data');
 
-
+//currentUser object set on successful sign-in
 let currentUser = {
   token:'',
   id: undefined
 };
+
 
 
 
@@ -57,23 +58,28 @@ const signInSuccess = (data) => {
   console.log('signed-in');
   currentUser.token = data.user.token;
   currentUser.id = data.user.id;
-  console.log(currentUser);
   $('#signInModal').modal('hide');
+  $('.open-signup').hide();
+  $('.open-signin').hide();
+  $('.open-change-password').show();
+  $('.sign-out').show();
   getAlbums();
   };
 
-
-
 const changePasswordSuccess = () => {
   console.log('changed password');
-  $('#signInModal').modal('hide');
+  $('#changePasswordModal').modal('hide');
 };
 
 const signOutSuccess = () => {
   currentUser.token = '';
   currentUser.id = undefined;
+  $('.content').html('');
   console.log('signed out');
-  $('#signInModal').modal('hide');
+  $('.open-signup').show();
+  $('.open-signin').show();
+  $('.open-change-password').hide();
+  $('.sign-out').hide();
 };
 
 
