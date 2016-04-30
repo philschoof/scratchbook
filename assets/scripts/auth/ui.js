@@ -22,6 +22,10 @@ let displayAlbums = function(albums){
     $('.edit-album').on('click', function() {
     localStorage.setItem('ID', $(this).attr('data-attribute'));
     $('#editAlbumModal').modal('show');
+    });
+    $('.open-new-album').on('click', function(event){
+      event.preventDefault();
+      $('#newAlbumModal').modal('show');
   });
 };
 
@@ -93,11 +97,10 @@ const newAlbumSuccess = (data) => {
   getAlbums();
 };
 
-const editAlbumSuccess = (data) => {
+const editAlbumSuccess = () => {
   if(localStorage.getItem('ID')){
     localStorage.removeItem('ID');
   }
-  console.log(data);
   $('#editAlbumModal').modal('hide');
   getAlbums();
 };

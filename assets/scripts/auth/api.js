@@ -70,6 +70,7 @@ const newAlbum = (success, failure, data) => {
       "album": {
         "title": data.album.title,
         "artist": data.album.artist,
+        "thoughts": data.album.thoughts
       }
     }
   })

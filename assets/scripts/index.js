@@ -33,10 +33,7 @@ $('.delete-album-modal-button').on('click', function(event) {
   $('#deleteAlbumModal').modal('show');
 });
 
-$('.open-new-album').on('click', function(event){
-  event.preventDefault();
-  $('#newAlbumModal').modal('show');
-});
+//open-new-album modal is in auth/ui.displayAlbums
 
 //Edit modal
 $('.albums').on('click', function(event){

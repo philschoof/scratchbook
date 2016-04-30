@@ -1,10 +1,14 @@
 
-<ul>
 {{#each albums}}
+<div class="panel panel-default open-new-album">
+  <div class="panel-body">
+    <h3>New Album</h3>
+  </div>
+</div>
   {{#each this}}
+
     <div class="panel panel-default edit-album" data-attribute={{this.id}}>
       <div class="panel-body">
-        <li >
           <h3>{{this.title}}</h3>
           <h4>{{this.artist}}</h4>
           {{#if this.cover}}
@@ -16,7 +20,6 @@
             <div class="album-description"></div>
           {{/if}}
           <div class="album-thoughts">{{this.thoughts}}</div>
-        </li>
       </div>
     </div>
   {{/each}}

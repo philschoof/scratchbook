@@ -1,15 +1,26 @@
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
 
+body {
+  background: #EEE;
+  color: #444;
+  font-size: 18px;
+  line-height: 1.6;
+  padding: 0 10px;
+}
+
+.container {
+  margin: 40px auto;
+  max-width: 960px;
+}
+
 .content {
   padding: 25px;
 }
 
 .edit-album {
-  font-size: 22px;
+  font-size: 18px;
   list-style: none;
-  text-decoration: underline;
-  text-transform: capitalize;
 }
 
 .open-change-password,
