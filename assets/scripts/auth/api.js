@@ -14,13 +14,13 @@ const signUp = (success, failure, data) => {
   .fail(failure);
 };
 
-const signIn = (success, failure, data) => {
+const signIn = (success, getAlbums, failure, data) => {
   $.ajax({
     method: 'POST',
     url: app.api + 'sign-in',
     data,
   })
-  .done(success)
+  .done(success, getAlbums)
   .fail(failure);
 };
 

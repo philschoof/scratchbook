@@ -16,13 +16,14 @@ const signUpSuccess = (data) => {
   $('#signUpModal').modal('hide');
 };
 
-const signInSuccess = (data) => {
+const signInSuccess = (data, getAlbums) => {
   console.log('signed-in');
   currentUser.token = data.user.token;
   currentUser.id = data.user.id;
   console.log(currentUser);
   $('#signInModal').modal('hide');
-  //authApi.getAlbums();
+  getAlbums();
+
 };
 
 const changePasswordSuccess = () => {

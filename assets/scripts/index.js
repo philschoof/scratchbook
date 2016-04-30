@@ -61,7 +61,7 @@ $('#sign-in').on('submit', function (event){
   let data = getFormFields(this);
   console.log(data);
   event.preventDefault();
-  authApi.signIn(authUi.signInSuccess, authUi.failure, data);
+  authApi.signIn(authUi.signInSuccess, authApi.getAlbums, authUi.failure, data);
 
 });
 
