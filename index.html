@@ -79,19 +79,19 @@
                     <form id="sign-up">
                       <div class="form-group">
                         <label for="signUpUsername">Username</label>
-                        <input type="text" class="form-control" id="signUpUsername" name="credentials[username]" placeholder="Username">
+                        <input type="text" class="form-control" id="signUpUsername" name="credentials[username]" placeholder="Username" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{1,20}$">
                       </div>
                       <div class="form-group">
                         <label for="signUpEmail">Email address</label>
                         <input type="email" class="form-control" id="signUpEmail" name="credentials[email]" placeholder="Email">
                       </div>
                       <div class="form-group">
-                        <label for="signUpPassword1">Password</label>
-                        <input type="password" class="form-control" id="signUpPassword1" name="credentials[password]" placeholder="Password">
+                        <label for="signUpPassword1">Password <span class="password-span">Uppercase, lowercase, and number</span></label>
+                        <input type="password" class="form-control" id="signUpPassword1" name="credentials[password]" placeholder="Password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$">
                       </div>
                       <div class="form-group">
                         <label for="signUpPassword2">Confirm Password</label>
-                        <input type="password" class="form-control" id="signUpPassword2" name="credentials[password_confirmation]" placeholder="Password">
+                        <input type="password" class="form-control" id="signUpPassword2" name="credentials[password_confirmation]" placeholder="Password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$">
                       </div>
 
                       <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -116,12 +116,12 @@
                       <p class="sign-in-error"></p>
                       <form id="sign-in">
                         <div class="form-group">
-                          <label for="signInEmail">Email address</label>
+                          <label for="signInEmail" >Email address</label>
                           <input type="email" class="form-control" id="signInEmail" name="credentials[email]" placeholder="Email">
                         </div>
                         <div class="form-group">
-                          <label for="signInPassword">Password</label>
-                          <input type="password" class="form-control" id="signInPassword" name="credentials[password]" placeholder="Password">
+                          <label for="signInPassword">Password <span class="password-span">Uppercase, lowercase, and number</span></label>
+                          <input type="password" class="form-control" id="signInPassword" name="credentials[password]" placeholder="Password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$">
                         </div>
 
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -147,11 +147,11 @@
                       <form id="change-password">
                         <div class="form-group">
                           <label for="changePassword1">Old Password</label>
-                          <input type="password" class="form-control" id="changePassword1" name="pw_creds[old]" placeholder="Old Password">
+                          <input type="password" class="form-control" id="changePassword1" name="pw_creds[old]" placeholder="Old Password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$">
                         </div>
                         <div class="form-group">
-                          <label for="changePassword2">New Password</label>
-                          <input type="password" class="form-control" id="changePassword2" name="pw_creds[new]" placeholder="New Password">
+                          <label for="changePassword2">New Password <span class="password-span">Uppercase, lowercase, and number</span></label>
+                          <input type="password" class="form-control" id="changePassword2" name="pw_creds[new]" placeholder="New Password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$">
                         </div>
 
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -181,7 +181,7 @@
                           </div>
                           <div class="form-group">
                             <label for="newAlbumArtist">Artist</label>
-                            <input type="text" class="form-control" id="newAlbumArtist" name="album[artist]"placeholder="Artist">
+                            <input type="text" class="form-control" id="newAlbumArtist" name="album[artist]"placeholder="Artist" >
                           </div>
                           <div class="form-group">
                             <label for="newAlbumThoughts">Thoughts</label>
@@ -213,11 +213,11 @@
                           </div>
                           <div class="form-group">
                             <label for="editAlbumArtist">Artist</label>
-                            <input type="text" class="form-control" id="editAlbumArtist" name="album[artist]" placeholder="Artist">
+                            <input type="text" class="form-control" id="editAlbumArtist" name="album[artist]" placeholder="Artist" >
                           </div>
                           <div class="form-group">
                             <label for="editAblumThoughts">Thoughts</label>
-                            <textarea class="form-control" id="editAlbumThoughts" name="album[thoughts]" placeholder="Your Thoughts..." rows='5' value=""></textarea>
+                            <textarea class="form-control" id="editAlbumThoughts" name="album[thoughts]" placeholder="Your Thoughts..." rows='5' ></textarea>
                           </div>
                           <button type="button" class="btn btn-danger delete-album-modal-button">Delete Album</button>
                           <button type="submit" class="btn btn-primary">Save changes</button>
@@ -268,7 +268,7 @@
                           </div>
                           <div class="form-group">
                             <label for="albumCoverArtist">Artist</label>
-                            <input type="text" class="form-control" id="albumCoverArtist" name="album[artist]" placeholder="Artist">
+                            <input type="text" class="form-control" id="albumCoverArtist" name="album[artist]" placeholder="Artist" >
                           </div>
                           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                           <button type="submit" class="btn btn-primary">Get Cover</button>
@@ -281,6 +281,7 @@
                   </div>
                 </div>
               </div>
+
 
 
 
