@@ -1,28 +1,33 @@
 
 {{#each albums}}
-<div class="panel panel-default open-new-album">
-  <div class="panel-body">
-    <h3>New Album +</h3>
+<div class="row">
+  <div class="panel panel-default open-new-album">
+    <div class="panel-body">
+      <h3>New Album +</h3>
+    </div>
   </div>
 </div>
   {{#each this}}
 
+  <div class="row">
     <div class="panel panel-inverse edit-album" data-attribute={{this.id}}>
       <div class="panel-body">
-        <div class="album-cover">
-          <img src="{{this.cover}}">
+        <div class="col-md-6">
+          <div class='album-stats'
+            <h5 class="album-date">{{this.created_at}}</h5>
+            <h3 class="album-title">{{this.title}}</h3>
+            <h4 class="album-artist">{{this.artist}}</h4>
+            <div class="album-thoughts"><p>{{this.thoughts}}</p></div>
+          </div>
         </div>
-        <div class='album-stats'
-          <h5 class="album-date">{{this.created_at}}</h5>
-          <h3 class="album-title">{{this.title}}</h3>
-          <h4 class="album-artist">{{this.artist}}</h4>
-          <div class="album-thoughts"><p>{{this.thoughts}}</p></div>
+        <div class="col-md-6">
+          <div class="album-cover">
+            <img class="cover-image" src="{{this.cover}}">
+          </div>
+        </div>
       </div>
-          {{#if this.cover}}
-          {{/if}}
-          {{#if this.description}}
-            <div class="album-description"></div>
-          {{/if}}
+    </div>
+  </div><!--close row-->
 
       </div>
     </div>

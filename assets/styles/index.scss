@@ -1,22 +1,41 @@
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
 $off-white: #c3c3c3;
-$grey: #444444;
+$white: #fff;
+$grey: #444;
+$bootstrap-white: #f8f8f8;
+$off-black: #111;
+$light-blue: #428bca;
+$black: #000;
 
 body {
   background: url('https://images.unsplash.com/photo-1461360228754-6e81c478b882?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=380f3a7f89d8679195123a4e3245791b') no-repeat center center fixed;
   //background: url('https://images.unsplash.com/photo-1444990689320-bd2a7a839644?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=4c7cfe1fefafc94b44fc477725ab1ca3') no-repeat center center fixed;
   //background: url('https://images.unsplash.com/uploads/1412282232015a06e258a/4bdd2a58?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=282ba438bc6235c8139ab6619e720d99') no-repeat center center fixed;
   background-size: cover;
-  color: #444;
+  color: $grey;
   font-size: 18px;
   line-height: 1.6;
   padding: 10px;
 }
 
-.signed-in-background {
+
+
+.signed-in-background-1 {
   background: url('https://images.unsplash.com/photo-1444990689320-bd2a7a839644?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=4c7cfe1fefafc94b44fc477725ab1ca3') no-repeat center center fixed;
+  background-size: cover;
 }
+
+.signed-in-background-2 {
+  background: url('https://images.unsplash.com/photo-1457689146074-bd667e343a9c?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=5ef6e4cd3617435b83cb3b687a699946') no-repeat center center fixed;
+  background-size: cover;
+}
+
+.signed-in-background-3 {
+  background: url('https://images.unsplash.com/photo-1420161900862-9a86fa1f5c79?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=ca5701e0f1e03876b6bd3477a2390f7f') no-repeat center center fixed;
+  background-size: cover;
+}
+
 
 .container {
   margin: 40px auto;
@@ -27,26 +46,61 @@ body {
   padding: 25px;
 }
 
+.landing {
+  display: none;
+}
+
+.landing-button {
+  margin-top: 10px;
+}
+
 .landing-div {
-  background: $off-white;
+  background-color: #fff;
+  background-color: rgba(255,255,255,0.5);
   border-radius: 5%;
-  color: #111111;
-  display: hidden;
-  margin: 0 auto;
-  padding: 25px;
-  position: relative;
+  color: $off-black;
+  font-size: 16px;
+  height:100px;
+  margin-top: -35px;
+  margin-right: 15px;
+  //margin: 0 auto;
+  opacity: .5;
+  //padding: 25px;
+  position: fixed;
   text-align: center;
-  top: 150px;
-  width:250px;
+  // top: 150px;
+  right: 0;
+  left: 50;
+  transition: .2s;
+  width: 250px;
 }
 
-.landing-div h1{
-  font-size: 42px;
+.landing-div:hover {
+  opacity: 1;
 }
 
-.navbar-brand {
-  color:#f5f5f5;
+
+.landing-text h1 {
+  background-color: #fff;
+  background-color: rgba(255,255,255,0.5);
+  box-sizing: border-box;
+  border: 2px solid $white;
+  border-radius: 2%;
+  color: $off-black;
+  font-size: 70px;
+  position: relative;
+  top:150px;
+  text-align: center;
+  transition: .2s ease;
 }
+
+
+
+
+.navbar {
+  display: none;
+}
+
 
 .dropdown-toggle,
 .dropdown-menu {
@@ -54,76 +108,86 @@ body {
   transition: .2s ease;
 }
 
-
-
 .dropdown-menu {
   text-align: right;
   width: 40px;
 }
 
-.dropdown-menu:hover .navbar-right{
-  color: #428bca
+.dropdown-menu:hover .navbar-right {
+  color: $light-blue;
 }
 
 .navbar-right {
-  border: 1px solid white;
+  border: 1px solid $white;
   border-radius: 5%;
-  color: #000;
+  color: $black;
   transition: .2s ease;
 }
 
-.edit-album {
-  font-size: 18px;
-  list-style: none;
-}
 
 #dropdown {
   display: none;
 }
 
 
+.sign-up-error,
+.sign-in-error {
+  color: $light-blue;
+  text-align: center;
+}
 
+.album-cover-error {
+  text-align: center;
+}
 
-//
-// .navbar-right a{
-//   color: #f5f5f5;
-// }
-//
-// .navbar-right a:hover{
-//   color: #428bca;
-// }
+.album-cover-modal{
+  float: right;
+}
+
+.delete-cover {
+  display: none;
+}
+
 
 // Handlebars
+
 .panel {
-
+  border-radius: 2%;
+  font-size: 18px;
+  list-style: none;
+  opacity: .9;
+  transition: .2s ease;
 }
 
-.panel-body {
-  background: #f5f5f5;
-  color:#444;
+.panel:hover {
+  opacity: 1;
 }
-
-// .panel-body {
-//   background: #444;
-//   color:#f5f5f5;
-// }
 
 .album-artist {
   text-decoration: underline;
 }
 
 .album-thoughts {
-  border-left: 2px solid black;
-  margin: 50px 0 20px 0;
+  border-left: 2px solid $black;
+  margin: 50px 0 20px;
   padding-left: 10px;
 }
 
-.album-cover{
+.album-cover {
   float: right;
-
 }
 
-.album-stats{
+.album-stats {
   float: left;
   width: 50%;
+}
+
+
+//Media Queries
+
+@media (max-width:741px){
+  img {
+    float: left;
+    width: 100%;
+  }
 }

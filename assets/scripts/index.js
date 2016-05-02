@@ -6,9 +6,8 @@
 // use require without a reference to ensure a file is bundled
 
 
-require('./example');
 const authApi = require('./auth/api');
-require('./auth/events');
+const getFormFields = require('../../lib/get-form-fields');
 const authUi = require('./auth/ui');
 
 
@@ -35,10 +34,12 @@ $('.delete-album-modal-button').on('click', function(event) {
 
 $('.album-cover-modal').on('click', function(event) {
   event.preventDefault();
+  //to clear residual error messages
+  $('.album-cover-error').text('');
   $('#albumCoverModal').modal('show');
 });
 
-//open-new-album modal is in auth/ui.displayAlbums
+//open-new-album modal and edit-modal are in auth/ui.displayAlbums
 
 
 
@@ -46,19 +47,15 @@ $('.album-cover-modal').on('click', function(event) {
 
 //Users
 $('#sign-up').on('submit', function (event){
-  console.log('click');
   let data = getFormFields(this);
-  console.log(data);
   event.preventDefault();
-  authApi.signUp(authUi.signUpSuccess, authUi.failure, data);
+  authApi.signUp(authUi.signUpSuccess, authUi.signUpFail, data);
 });
 
 $('#sign-in').on('submit', function (event){
   let data = getFormFields(this);
-  console.log(data);
   event.preventDefault();
-  authApi.signIn(authUi.signInSuccess,authUi.failure, data);
-
+  authApi.signIn(authUi.signInSuccess, authUi.signInFail, data);
 });
 
 $('#change-password').on('submit', function(event){
@@ -98,7 +95,16 @@ $('#album-cover-form').on('submit', function(event){
 
 $('#deleteAlbumConfirm').on('click', function(event){
   let data = getFormFields(this);
-  console.log(data);
   event.preventDefault();
   authApi.deleteAlbum(authUi.deleteAlbumSuccess, authUi.failure, data);
+});
+
+$('.delete-cover').on('click', function(event) {
+  event.preventDefault();
+  authApi.deleteCover(authUi.deleteCoverSuccess, authUi.failure);
+});
+
+$(() =>{
+  $('.navbar').fadeIn('slow');
+  $('.landing').fadeIn('slow');
 });

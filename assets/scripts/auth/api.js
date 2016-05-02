@@ -123,17 +123,17 @@ let prepareData = function(name){
   return name;
 };
 
+//Request to lastfm API
 const getAlbumCover = (success, failure, data) => {
-  console.log(data);
-  console.log('api getAlbumCover');
   let preparedArtist = prepareData(data.album.artist);
   let preparedAlbum = prepareData(data.album.title);
   $.ajax({
-    url: 'http://ws.audioscrobbler.com/2.0/?method=album.getinfo&api_key=507b5d03b9f50c1d266bde3a5ef48fe0&artist=' + preparedArtist + '&album=' + preparedAlbum + '&format=json'
+    url: app.lastFm + preparedArtist + '&album=' + preparedAlbum + '&format=json'
   }).done(success)
   .fail(failure);
 };
 
+//Patch request for album cover
 const albumCoverPatch = (success, failure, data) => {
   let album_id = localStorage.getItem('ID');
  $.ajax({
@@ -151,11 +151,43 @@ const albumCoverPatch = (success, failure, data) => {
  .fail(failure);
 };
 
+//Album cover success runs edit album success in ui - clears local storage, hides modals and runs getAlbums()
 const albumCoverSuccess = (data) => {
-  console.log('cover success');
-  let albumCoverValue = data.album.image[3]['#text'];
-  albumCoverPatch(ui.editAlbumSuccess, ui.failure, albumCoverValue);
+  console.log(data);
+  if (data.message === "Album not found"){
+    $('.album-cover-error').text("Album not found");
+  }
+  //tests for specific lastFM error image
+  else if(data.album.image[3]['#text'] === 'http://img2-ak.lst.fm/i/u/300x300/0febc90a297f4dc792371d0418adf9c5.png'){
+    $('.album-cover-error').text("Album cover is unavailable from lastFM");
+  //checks for album error or unavailable before calling the patch request
+  }else if(data.album !== undefined && data.album.image[3]['#text'] !== '' ){
+    $('.album-cover-error').text("");
+    let albumCoverValue = data.album.image[3]['#text'];
+    albumCoverPatch(ui.editAlbumSuccess, ui.failure, albumCoverValue);
+    $('.delete-album').show();
+  }else {
+    $('.album-cover-error').text("Album cover is unavailable");
+  }
 };
+
+const deleteCover = (success, failure) => {
+  let album_id = localStorage.getItem('ID');
+ $.ajax({
+   method: 'PATCH',
+   url: app.api + 'albums/' + album_id,
+   data: {
+     "album": {
+       "cover": '',
+     }
+   },
+   headers:{
+     Authorization: "Token token=" + ui.currentUser.token,
+   }
+ }).done(success)
+ .fail(failure);
+};
+
 
 
 
@@ -170,6 +202,6 @@ module.exports = {
   deleteAlbum,
   getAlbumCover,
   albumCoverSuccess,
-  albumCoverPatch
-
+  albumCoverPatch,
+  deleteCover
 };
