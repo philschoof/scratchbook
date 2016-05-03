@@ -30,7 +30,7 @@ let displayAlbums = function(albums){
     $('.content').html('');
   let albumsDisplayTemplate = require('../templates/albums-display.handlebars');
   console.log("display albums", albums);
-    $('.content').append(albumsDisplayTemplate({
+    $('.content').html(albumsDisplayTemplate({
       albums : albums.albums
     }));
     //when album panel is clicked to open edit modal
@@ -79,18 +79,12 @@ let getAlbums = function(){
 
 
 //User
-const signUpSuccess = () => {
-  console.log('signed-up');
-  $('#signUpModal').modal('hide');
-  $('.sign-up-error').text('');
-  $('.open-signup').hide();
-  $('.open-signin').text('Come on in');
+
+const failure = (error) => {
+  console.log("fail");
+  console.log(error);
 };
 
-const signUpFail = () => {
-  console.log('sign up fail');
-  $('.sign-up-error').text('Invalid info');
-};
 
 const signInSuccess = (data) => {
   console.log('signed-in');
@@ -111,6 +105,43 @@ const signInSuccess = (data) => {
 const signInFail = () => {
   console.log('sign up fail');
   $('.sign-in-error').text('Invalid info');
+};
+
+
+
+
+const autoSignIn = (success, failire, data) => {
+  $.ajax({
+    method: 'POST',
+    url: app.api + 'sign-in',
+    data: {
+      "credentials": {
+        "email": data.email,
+        "password": data.password
+      }
+    }
+  })
+  .done(success)
+  .fail(failure);
+};
+
+
+const signUpSuccess = () => {
+  console.log('signed-up');
+  let data = {
+    email: localStorage.getItem("email"),
+    password: localStorage.getItem("pw")
+  };
+  autoSignIn(signInSuccess, signInFail, data);
+  $('#signUpModal').modal('hide');
+  $('.sign-up-error').text('');
+  $('.open-signup').hide();
+  $('.open-signin').text('Come on in');
+};
+
+const signUpFail = () => {
+  console.log('sign up fail');
+  $('.sign-up-error').text('Invalid info');
 };
 
 const changePasswordSuccess = () => {
@@ -177,10 +208,7 @@ const deleteCoverSuccess = () => {
 };
 
 
-const failure = (error) => {
-  console.log("fail");
-  console.log(error);
-};
+
 
 
 module.exports = {

@@ -25,6 +25,10 @@ const signIn = (success, failure, data) => {
   .fail(failure);
 };
 
+
+
+
+
 const changePassword = (success, failure, data) => {
   $.ajax({
     method: "PATCH",
