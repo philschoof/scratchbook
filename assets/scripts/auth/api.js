@@ -151,7 +151,7 @@ const albumCoverPatch = (success, failure, data) => {
  .fail(failure);
 };
 
-//Album cover success runs edit album success in ui - clears local storage, hides modals and runs getAlbums()
+//Tests if returned image is valid, then runs edit album success in ui, which clears local storage, hides modals and runs getAlbums()
 const albumCoverSuccess = (data) => {
   console.log(data);
   if (data.message === "Album not found"){

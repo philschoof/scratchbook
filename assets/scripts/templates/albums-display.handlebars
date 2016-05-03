@@ -1,5 +1,5 @@
 
-{{#each albums}}
+
 <div class="row">
   <div class="panel panel-default open-new-album">
     <div class="panel-body">
@@ -7,7 +7,8 @@
     </div>
   </div>
 </div>
-  {{#each this}}
+{{#each albums}}
+
 
   <div class="row">
     <div class="panel panel-inverse edit-album" data-attribute={{this.id}}>
@@ -31,5 +32,5 @@
 
       </div>
     </div>
-  {{/each}}
+
 {{/each}}

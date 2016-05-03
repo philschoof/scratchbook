@@ -7,8 +7,8 @@
 
 
 const authApi = require('./auth/api');
-const getFormFields = require('../../lib/get-form-fields');
 const authUi = require('./auth/ui');
+const getFormFields = require('../../lib/get-form-fields');
 
 
 //Modal controls

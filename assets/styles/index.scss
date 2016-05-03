@@ -183,17 +183,31 @@ body {
   float: right;
 }
 
+
+
 .album-stats {
   float: left;
-  width: 50%;
+
 }
 
 
 //Media Queries
 
-@media (max-width:741px){
-  img {
+@media (max-width:991px){
+  .album-stats {
     float: left;
+    width: 50%;
+  }
+}
+
+@media (max-width:741px){
+  .cover-image {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .album-stats {
     width: 100%;
   }
 }

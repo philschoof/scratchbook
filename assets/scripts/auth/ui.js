@@ -28,8 +28,9 @@ let displayAlbums = function(albums){
     $('.landing-div').hide();
     $('.content').html('');
   let albumsDisplayTemplate = require('../templates/albums-display.handlebars');
+  console.log(albums);
     $('.content').append(albumsDisplayTemplate({
-      albums
+      albums : albums.albums
     }));
     //when album panel is clicked to open edit modal
     $('.edit-album').on('click', function() {
@@ -143,6 +144,7 @@ const signOutSuccess = () => {
 const newAlbumSuccess = () => {
   console.log('new album success');
   $('#newAlbumModal').modal('hide');
+  $('.delete-cover').hide();
   getAlbums();
 };
 
