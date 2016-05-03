@@ -76,7 +76,7 @@ $('.sign-out').on('click', function(event){
 $('#new-album').on('submit', function(event){
   let data = getFormFields(this);
   event.preventDefault();
-  authApi.newAlbum(authUi.newAlbumSuccess, authUi.failure, data);
+  authApi.newAlbum(authUi.newAlbumSuccess, authUi.newAlbumFail, data);
 });
 
 $('#edit-album-form').on('submit', function(event){
@@ -88,7 +88,6 @@ $('#edit-album-form').on('submit', function(event){
 $('#album-cover-form').on('submit', function(event){
   let data = getFormFields(this);
   console.log(data);
-  console.log('index');
   event.preventDefault();
   authApi.getAlbumCover(authApi.albumCoverSuccess, authUi.failure, data);
 });

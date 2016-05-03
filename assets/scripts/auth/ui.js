@@ -2,6 +2,7 @@
 
 const app = require('../app-data');
 
+
 //currentUser object set on successful sign-in
 let currentUser = {
   token:'',
@@ -15,7 +16,7 @@ let currentBackground = '';
 let setBackground = function() {
   let backgroundClasses = ['signed-in-background-1', 'signed-in-background-2', 'signed-in-background-3','signed-in-background-1', 'signed-in-background-2' ];
   let backgroundIndex = Math.floor(Math.random() * 5);
-  console.log(backgroundIndex);
+  console.log("background index:", backgroundIndex);
   currentBackground = backgroundClasses[backgroundIndex];
   return currentBackground;
 };
@@ -23,12 +24,12 @@ let setBackground = function() {
 
 
 
-//displayAlbums function used in getAlbums api call. Passes albums object to handlebars
+//displayAlbums function used in getAlbums api call. Passes albums object to handlebars. Called by getAblums
 let displayAlbums = function(albums){
     $('.landing-div').hide();
     $('.content').html('');
   let albumsDisplayTemplate = require('../templates/albums-display.handlebars');
-  console.log(albums);
+  console.log("display albums", albums);
     $('.content').append(albumsDisplayTemplate({
       albums : albums.albums
     }));
@@ -53,7 +54,6 @@ let displayAlbums = function(albums){
       event.preventDefault();
       $('#newAlbumModal').modal('show');
   });
-
 };
 
 
@@ -70,9 +70,7 @@ let getAlbums = function(){
     }
   }).done(function(albums){
     console.log('get albums success');
-    console.log(albums);
     displayAlbums(albums);
-
   });
 };
 
@@ -148,6 +146,11 @@ const newAlbumSuccess = () => {
   getAlbums();
 };
 
+const newAlbumFail = (data) => {
+  console.log(data);
+  $('.new-album-error').text("Cannot add album");
+};
+
 const editAlbumSuccess = () => {
   if(localStorage.getItem('ID')){
     localStorage.removeItem('ID');
@@ -174,8 +177,6 @@ const deleteCoverSuccess = () => {
 };
 
 
-
-
 const failure = (error) => {
   console.log("fail");
   console.log(error);
@@ -190,6 +191,7 @@ module.exports = {
   changePasswordSuccess,
   signOutSuccess,
   newAlbumSuccess,
+  newAlbumFail,
   editAlbumSuccess,
   deleteAlbumSuccess,
   deleteCoverSuccess,

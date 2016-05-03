@@ -11,7 +11,7 @@ const signUp = (success, failure, data) => {
     url: app.api + 'sign-up',
     data,
   })
-  .done(success)
+  .done(success, data)
   .fail(failure);
 };
 
@@ -153,7 +153,7 @@ const albumCoverPatch = (success, failure, data) => {
 
 //Tests if returned image is valid, then runs edit album success in ui, which clears local storage, hides modals and runs getAlbums()
 const albumCoverSuccess = (data) => {
-  console.log(data);
+  console.log("cover success", data);
   if (data.message === "Album not found"){
     $('.album-cover-error').text("Album not found");
   }
