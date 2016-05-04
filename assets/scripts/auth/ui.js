@@ -75,7 +75,7 @@ let getAlbums = function(){
 };
 
 
-//API outcomes
+//////API outcomes
 
 
 //User
@@ -109,7 +109,7 @@ const signInFail = () => {
 
 
 
-
+//attached to sign-up success
 const autoSignIn = (success, failire, data) => {
   $.ajax({
     method: 'POST',
