@@ -7,8 +7,8 @@
 
 
 const authApi = require('./auth/api');
-const getFormFields = require('../../lib/get-form-fields');
 const authUi = require('./auth/ui');
+const getFormFields = require('../../lib/get-form-fields');
 
 
 //Modal controls
@@ -48,6 +48,9 @@ $('.album-cover-modal').on('click', function(event) {
 //Users
 $('#sign-up').on('submit', function (event){
   let data = getFormFields(this);
+  console.log(data);
+  localStorage.setItem('email', data.credentials.email);
+  localStorage.setItem('password', data.credentials.password);
   event.preventDefault();
   authApi.signUp(authUi.signUpSuccess, authUi.signUpFail, data);
 });
@@ -76,7 +79,7 @@ $('.sign-out').on('click', function(event){
 $('#new-album').on('submit', function(event){
   let data = getFormFields(this);
   event.preventDefault();
-  authApi.newAlbum(authUi.newAlbumSuccess, authUi.failure, data);
+  authApi.newAlbum(authUi.newAlbumSuccess, authUi.newAlbumFail, data);
 });
 
 $('#edit-album-form').on('submit', function(event){
@@ -88,7 +91,6 @@ $('#edit-album-form').on('submit', function(event){
 $('#album-cover-form').on('submit', function(event){
   let data = getFormFields(this);
   console.log(data);
-  console.log('index');
   event.preventDefault();
   authApi.getAlbumCover(authApi.albumCoverSuccess, authUi.failure, data);
 });

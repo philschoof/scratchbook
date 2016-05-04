@@ -2,6 +2,7 @@
 
 const app = require('../app-data');
 
+
 //currentUser object set on successful sign-in
 let currentUser = {
   token:'',
@@ -15,7 +16,7 @@ let currentBackground = '';
 let setBackground = function() {
   let backgroundClasses = ['signed-in-background-1', 'signed-in-background-2', 'signed-in-background-3','signed-in-background-1', 'signed-in-background-2' ];
   let backgroundIndex = Math.floor(Math.random() * 5);
-  console.log(backgroundIndex);
+  console.log("background index:", backgroundIndex);
   currentBackground = backgroundClasses[backgroundIndex];
   return currentBackground;
 };
@@ -23,13 +24,14 @@ let setBackground = function() {
 
 
 
-//displayAlbums function used in getAlbums api call. Passes albums object to handlebars
+//displayAlbums function used in getAlbums api call. Passes albums object to handlebars. Called by getAblums
 let displayAlbums = function(albums){
     $('.landing-div').hide();
     $('.content').html('');
   let albumsDisplayTemplate = require('../templates/albums-display.handlebars');
-    $('.content').append(albumsDisplayTemplate({
-      albums
+  console.log("display albums", albums);
+    $('.content').html(albumsDisplayTemplate({
+      albums : albums.albums
     }));
     //when album panel is clicked to open edit modal
     $('.edit-album').on('click', function() {
@@ -52,7 +54,6 @@ let displayAlbums = function(albums){
       event.preventDefault();
       $('#newAlbumModal').modal('show');
   });
-
 };
 
 
@@ -69,29 +70,21 @@ let getAlbums = function(){
     }
   }).done(function(albums){
     console.log('get albums success');
-    console.log(albums);
     displayAlbums(albums);
-
   });
 };
 
 
-//API outcomes
+//////API outcomes
 
 
 //User
-const signUpSuccess = () => {
-  console.log('signed-up');
-  $('#signUpModal').modal('hide');
-  $('.sign-up-error').text('');
-  $('.open-signup').hide();
-  $('.open-signin').text('Come on in');
+
+const failure = (error) => {
+  console.log("fail");
+  console.log(error);
 };
 
-const signUpFail = () => {
-  console.log('sign up fail');
-  $('.sign-up-error').text('Invalid info');
-};
 
 const signInSuccess = (data) => {
   console.log('signed-in');
@@ -112,6 +105,43 @@ const signInSuccess = (data) => {
 const signInFail = () => {
   console.log('sign up fail');
   $('.sign-in-error').text('Invalid info');
+};
+
+
+
+//attached to sign-up success
+const autoSignIn = (success, failire, data) => {
+  $.ajax({
+    method: 'POST',
+    url: app.api + 'sign-in',
+    data: {
+      "credentials": {
+        "email": data.email,
+        "password": data.password
+      }
+    }
+  })
+  .done(success)
+  .fail(failure);
+};
+
+
+const signUpSuccess = () => {
+  console.log('signed-up');
+  let data = {
+    email: localStorage.getItem("email"),
+    password: localStorage.getItem("pw")
+  };
+  autoSignIn(signInSuccess, signInFail, data);
+  $('#signUpModal').modal('hide');
+  $('.sign-up-error').text('');
+  $('.open-signup').hide();
+  $('.open-signin').text('Come on in');
+};
+
+const signUpFail = () => {
+  console.log('sign up fail');
+  $('.sign-up-error').text('Invalid info');
 };
 
 const changePasswordSuccess = () => {
@@ -143,7 +173,13 @@ const signOutSuccess = () => {
 const newAlbumSuccess = () => {
   console.log('new album success');
   $('#newAlbumModal').modal('hide');
+  $('.delete-cover').hide();
   getAlbums();
+};
+
+const newAlbumFail = (data) => {
+  console.log(data);
+  $('.new-album-error').text("Cannot add album");
 };
 
 const editAlbumSuccess = () => {
@@ -174,11 +210,6 @@ const deleteCoverSuccess = () => {
 
 
 
-const failure = (error) => {
-  console.log("fail");
-  console.log(error);
-};
-
 
 module.exports = {
   signUpSuccess,
@@ -188,6 +219,7 @@ module.exports = {
   changePasswordSuccess,
   signOutSuccess,
   newAlbumSuccess,
+  newAlbumFail,
   editAlbumSuccess,
   deleteAlbumSuccess,
   deleteCoverSuccess,

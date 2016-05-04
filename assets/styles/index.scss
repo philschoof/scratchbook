@@ -56,19 +56,16 @@ body {
 
 .landing-div {
   background-color: #fff;
-  background-color: rgba(255,255,255,0.5);
+  background-color: rgba(255, 255, 255, .5);
   border-radius: 5%;
   color: $off-black;
   font-size: 16px;
-  height:100px;
+  height: 100px;
   margin-top: -35px;
   margin-right: 15px;
-  //margin: 0 auto;
   opacity: .5;
-  //padding: 25px;
   position: fixed;
   text-align: center;
-  // top: 150px;
   right: 0;
   left: 50;
   transition: .2s;
@@ -82,22 +79,24 @@ body {
 
 .landing-text h1 {
   background-color: #fff;
-  background-color: rgba(255,255,255,0.5);
-  box-sizing: border-box;
+  background-color: rgba(255, 255, 255, .5);
   border: 2px solid $white;
   border-radius: 2%;
+  box-sizing: border-box;
   color: $off-black;
+  display: block;
   font-size: 70px;
+  margin: 0 auto;
   padding: 10px;
   position: relative;
-  top:150px;
   text-align: center;
+  top: 150px;
   transition: .2s ease;
 }
 
 
 .password-span {
-  color:$grey;
+  color: $grey;
   font-size: 10px;
   font-style: italic;
 }
@@ -146,7 +145,7 @@ body {
   text-align: center;
 }
 
-.album-cover-modal{
+.album-cover-modal {
   float: right;
 }
 
@@ -183,17 +182,36 @@ body {
   float: right;
 }
 
+
+
 .album-stats {
   float: left;
-  width: 50%;
+
+}
+
+.new-album-error {
+  color: $light-blue;
+  text-align: center;
 }
 
 
 //Media Queries
 
-@media (max-width:741px){
-  img {
+@media (max-width:991px){
+  .album-stats {
     float: left;
+    width: 50%;
+  }
+}
+
+@media (max-width:741px){
+  .cover-image {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .album-stats {
     width: 100%;
   }
 }
