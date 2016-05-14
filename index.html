@@ -6,6 +6,7 @@
       <script src="vendor.bundle.js" type="text/javascript" charset="utf-8" defer></script>
       <script src="bundle.js" type="text/javascript" charset="utf-8" defer></script>
       <meta name="viewport" content="width=device-width, initial-scale=1">
+
     </head>
     <body class="container-fluid ">
       <!--navbar-->
@@ -38,16 +39,17 @@
 
           <div class="container">
 
-            <div class="landing landing-div">
+                <div class="landing landing-text">
+                  <h1>Welcome to Scratchbook, your personal music scrapbook</h1>
+                </div>
 
-                  <button class="btn btn-success open-signup landing-button">First time here?</button>
 
-                  <button class="btn btn-success open-signin landing-button">Been here before?</button>
-            </div>
+                <div class="landing landing-div">
+                  <button class="btn btn-danger open-signup landing-button">First time here?</button>
+                  <button class="btn btn-danger open-signin landing-button">Been here before?</button>
+                </div>
 
-            <div class="landing landing-text">
-              <h1>Welcome to Scratchbook, your personal music scrapbook</h1>
-            </div>
+
 
             <div class="content">
 
@@ -76,7 +78,7 @@
                   </div>
                   <div class="modal-body">
                     <p>Sign up to start a new Scratchbook.</p>
-                    <p class="sign-up-error"></p>
+                    <p class="sign-up-error">Invalid Info</p>
                     <form id="sign-up">
                       <div class="form-group">
                         <label for="signUpUsername">Username</label>
@@ -113,7 +115,7 @@
                       <h4 class="modal-title" id="signInModalLabel">Sign In</h4>
                     </div>
                     <div class="modal-body">
-                      <p class="sign-in-error"></p>
+                      <p class="sign-in-error">Email address or Password were incorrect</p>
                       <form id="sign-in">
                         <div class="form-group">
                           <label for="signInEmail" >Email address</label>

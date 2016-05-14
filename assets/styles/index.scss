@@ -10,8 +10,6 @@ $black: #000;
 
 body {
   background: url('https://images.unsplash.com/photo-1461360228754-6e81c478b882?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=380f3a7f89d8679195123a4e3245791b') no-repeat center center fixed;
-  //background: url('https://images.unsplash.com/photo-1444990689320-bd2a7a839644?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=4c7cfe1fefafc94b44fc477725ab1ca3') no-repeat center center fixed;
-  //background: url('https://images.unsplash.com/uploads/1412282232015a06e258a/4bdd2a58?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=282ba438bc6235c8139ab6619e720d99') no-repeat center center fixed;
   background-size: cover;
   color: $grey;
   font-size: 18px;
@@ -46,36 +44,9 @@ body {
   padding: 25px;
 }
 
-.landing {
-  display: none;
-}
-
 .landing-button {
   margin-top: 10px;
 }
-
-.landing-div {
-  background-color: #fff;
-  background-color: rgba(255, 255, 255, .5);
-  border-radius: 5%;
-  color: $off-black;
-  font-size: 16px;
-  height: 100px;
-  margin-top: -35px;
-  margin-right: 15px;
-  opacity: .5;
-  position: fixed;
-  text-align: center;
-  right: 0;
-  left: 50;
-  transition: .2s;
-  width: 250px;
-}
-
-.landing-div:hover {
-  opacity: 1;
-}
-
 
 .landing-text h1 {
   background-color: #fff;
@@ -87,13 +58,35 @@ body {
   display: block;
   font-size: 70px;
   margin: 0 auto;
+  margin-top: 50px;
   padding: 10px;
-  position: relative;
   text-align: center;
   top: 150px;
   transition: .2s ease;
 }
 
+.landing-div {
+  background-color: #fff;
+  background-color: rgba(255, 255, 255, .5);
+  border-radius: 5%;
+  color: $off-black;
+  display: block;
+  font-size: 16px;
+  height: 100px;
+  margin: 0 auto;
+  margin-top: 50px;
+  text-align: center;
+  transition: .2s;
+  width: 250px;
+}
+
+.landing-div:hover {
+  opacity: 1;
+}
+
+.sign-in-error {
+  display: none;
+}
 
 .password-span {
   color: $grey;
@@ -179,13 +172,13 @@ body {
 }
 
 .album-cover {
-  float: right;
+  // float: right;
 }
 
 
 
 .album-stats {
-  float: left;
+  // float: left;
 
 }
 
@@ -199,19 +192,27 @@ body {
 
 @media (max-width:991px){
   .album-stats {
-    float: left;
-    width: 50%;
+    // float: left;
+    // width: 50%;
   }
 }
 
 @media (max-width:741px){
-  .cover-image {
-    display: block;
-    margin: 0 auto;
+  .album-stats {
     width: 100%;
   }
 
-  .album-stats {
+}
+
+@media (max-width: 537px){
+  .landing-text h1 {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 441px){
+  .cover-image {
+    display: block;
     width: 100%;
   }
 }

@@ -14,11 +14,13 @@ const getFormFields = require('../../lib/get-form-fields');
 //Modal controls
 $('.open-signup').on('click', function(event){
   event.preventDefault();
+  $('.sign-up-error').hide();
   $('#signUpModal').modal('show');
 });
 
 $('.open-signin').on('click', function(event){
   event.preventDefault();
+  $('.sign-in-error').hide();
   $('#signInModal').modal('show');
 });
 

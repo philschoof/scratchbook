@@ -88,6 +88,7 @@ const failure = (error) => {
 
 const signInSuccess = (data) => {
   console.log('signed-in');
+  console.log(app);
   currentUser.token = data.user.token;
   currentUser.id = data.user.id;
   currentUser.username = data.user.username;
@@ -96,6 +97,7 @@ const signInSuccess = (data) => {
   $('#signInModal').modal('hide');
   $('.landing').hide();
   $('#dropdown').show();
+  $('.sign-in-error').text('');
   //display user's albums on sign-in
   getAlbums();
   //change background
@@ -104,7 +106,7 @@ const signInSuccess = (data) => {
 
 const signInFail = () => {
   console.log('sign up fail');
-  $('.sign-in-error').text('Invalid info');
+  $('.sign-in-error').show();
 };
 
 
@@ -141,7 +143,7 @@ const signUpSuccess = () => {
 
 const signUpFail = () => {
   console.log('sign up fail');
-  $('.sign-up-error').text('Invalid info');
+  $('.sign-up-error').show();
 };
 
 const changePasswordSuccess = () => {
