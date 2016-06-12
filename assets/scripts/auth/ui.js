@@ -92,11 +92,13 @@ const signInSuccess = (data) => {
   currentUser.token = data.user.token;
   currentUser.id = data.user.id;
   currentUser.username = data.user.username;
+  $('.navbar').removeClass('hidden');
   $('.dropdown-toggle').text(currentUser.username);
   //show/hide user CRUD options
   $('#signInModal').modal('hide');
   $('.landing').hide();
   $('#dropdown').show();
+  $('.navbar-toggle').show();
   $('.sign-in-error').text('');
   //display user's albums on sign-in
   getAlbums();
@@ -156,6 +158,7 @@ const signOutSuccess = () => {
   currentUser.id = undefined;
   //show/hide user CRUD options and clear albums + username
   $('body').removeClass(currentBackground);
+  $('.navbar').addClass('hidden');
   $('.content').html('');
   $('.landing').show();
   $('.open-signup').show();
