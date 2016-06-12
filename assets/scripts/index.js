@@ -108,7 +108,7 @@ $('.delete-cover').on('click', function(event) {
   authApi.deleteCover(authUi.deleteCoverSuccess, authUi.failure);
 });
 
-$(() =>{
-  $('.navbar').fadeIn('slow');
-  $('.landing').fadeIn('slow');
-});
+// $(() =>{
+//   $('.navbar').fadeIn('slow');
+//   $('.landing').fadeIn('slow');
+// });
