@@ -426,7 +426,6 @@ webpackJsonp([0],[
 	  currentUser.token = data.user.token;
 	  currentUser.id = data.user.id;
 	  currentUser.username = data.user.username;
-	  $('.navbar').removeClass('hidden');
 	  $('.dropdown-toggle').text(currentUser.username);
 	  //show/hide user CRUD options
 	  $('#signInModal').modal('hide');
@@ -489,7 +488,6 @@ webpackJsonp([0],[
 	  currentUser.id = undefined;
 	  //show/hide user CRUD options and clear albums + username
 	  $('body').removeClass(currentBackground);
-	  $('.navbar').addClass('hidden');
 	  $('.content').html('');
 	  $('.landing').show();
 	  $('.open-signup').show();
