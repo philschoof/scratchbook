@@ -94,6 +94,7 @@ const signInSuccess = (data) => {
   currentUser.username = data.user.username;
   $('.dropdown-toggle').text(currentUser.username);
   //show/hide user CRUD options
+  $('.navbar').removeClass('hidden');
   $('#signInModal').modal('hide');
   $('.landing').hide();
   $('#dropdown').show();
