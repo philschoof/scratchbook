@@ -18,10 +18,6 @@ body {
 }
 
 
-.hidden {
-  display: none;
-}
-
 
 .signed-in-background-1 {
   background: url('https://images.unsplash.com/photo-1444990689320-bd2a7a839644?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=4c7cfe1fefafc94b44fc477725ab1ca3') no-repeat center center fixed;
@@ -56,13 +52,13 @@ body {
   background-color: #fff;
   background-color: rgba(255, 255, 255, .5);
   border: 2px solid $white;
-  border-radius: 5px;
+  border-radius: 2%;
   box-sizing: border-box;
   color: $off-black;
   display: block;
   font-size: 70px;
   margin: 0 auto;
-  margin-top: 80px;
+  margin-top: 50px;
   padding: 10px;
   text-align: center;
   top: 150px;
@@ -72,7 +68,7 @@ body {
 .landing-div {
   background-color: #fff;
   background-color: rgba(255, 255, 255, .5);
-  border-radius: 5px;
+  border-radius: 5%;
   color: $off-black;
   display: block;
   font-size: 16px;
@@ -106,7 +102,7 @@ body {
 
 .dropdown-toggle,
 .dropdown-menu {
-  border-radius: 5px;
+  border-radius: 5%;
   transition: .2s ease;
 }
 
@@ -121,13 +117,9 @@ body {
 
 .navbar-right {
   border: 1px solid $white;
-  border-radius: 5px;
+  border-radius: 5%;
   color: $black;
   transition: .2s ease;
-}
-
-.navbar-toggle {
-  display: none;
 }
 
 
@@ -158,7 +150,7 @@ body {
 // Handlebars
 
 .panel {
-  border-radius: 5px;
+  border-radius: 2%;
   font-size: 18px;
   list-style: none;
   opacity: .9;

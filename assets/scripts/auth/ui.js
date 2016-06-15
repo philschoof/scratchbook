@@ -97,7 +97,6 @@ const signInSuccess = (data) => {
   $('#signInModal').modal('hide');
   $('.landing').hide();
   $('#dropdown').show();
-  $('.navbar-toggle').show();
   $('.sign-in-error').text('');
   //display user's albums on sign-in
   getAlbums();
