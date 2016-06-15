@@ -163,6 +163,7 @@ body {
   list-style: none;
   opacity: .9;
   transition: .2s ease;
+
 }
 
 .panel:hover {
@@ -180,7 +181,7 @@ body {
 }
 
 .album-cover {
-  // float: right;
+  float: right;
 }
 
 
@@ -202,6 +203,10 @@ body {
   .album-stats {
     // float: left;
     // width: 50%;
+  }
+
+  .album-cover {
+    float:none;
   }
 }
 

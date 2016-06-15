@@ -113,30 +113,30 @@ const signInFail = () => {
 
 
 
-//attached to sign-up success
-const autoSignIn = (success, failire, data) => {
-  $.ajax({
-    method: 'POST',
-    url: app.api + 'sign-in',
-    data: {
-      "credentials": {
-        "email": data.email,
-        "password": data.password
-      }
-    }
-  })
-  .done(success)
-  .fail(failure);
-};
+// //attached to sign-up success
+// const autoSignIn = (success, failire, data) => {
+//   $.ajax({
+//     method: 'POST',
+//     url: app.api + 'sign-in',
+//     data: {
+//       "credentials": {
+//         "email": data.email,
+//         "password": data.password
+//       }
+//     }
+//   })
+//   .done(success)
+//   .fail(failure);
+// };
 
 
 const signUpSuccess = () => {
   console.log('signed-up');
-  let data = {
-    email: localStorage.getItem("email"),
-    password: localStorage.getItem("pw")
-  };
-  autoSignIn(signInSuccess, signInFail, data);
+  // let data = {
+  //   email: localStorage.getItem("email"),
+  //   password: localStorage.getItem("pw")
+  // };
+  // autoSignIn(signInSuccess, signInFail, data);
   $('#signUpModal').modal('hide');
   $('.sign-up-error').text('');
   $('.open-signup').hide();
