@@ -1,13 +1,15 @@
 'use strict';
 
 const app = require('../app-data');
+let moment = require('moment');
+moment().format();
 
 
 //currentUser object set on successful sign-in
 let currentUser = {
   token:'',
-  id: undefined,
-  username: undefined
+  id: 0,
+  username: ''
 };
 
 //selects random background class to add on login
@@ -29,7 +31,6 @@ let displayAlbums = function(albums){
     $('.landing-div').hide();
     $('.content').html('');
   let albumsDisplayTemplate = require('../templates/albums-display.handlebars');
-  console.log("display albums", albums);
     $('.content').html(albumsDisplayTemplate({
       albums : albums.albums
     }));
@@ -154,7 +155,7 @@ const changePasswordSuccess = () => {
 
 const signOutSuccess = () => {
   currentUser.token = '';
-  currentUser.id = undefined;
+  currentUser.id = 0;
   //show/hide user CRUD options and clear albums + username
   $('body').removeClass(currentBackground);
   $('.content').html('');

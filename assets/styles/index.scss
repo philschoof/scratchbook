@@ -15,8 +15,20 @@ body {
   font-size: 18px;
   line-height: 1.6;
   padding: 10px;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 300;
 }
 
+.btn{
+  transition: ease-in-out .5s;
+  font-weight: 700;
+}
+
+.btn:hover{
+  background: #fff;
+  color: black;
+
+}
 
 
 .signed-in-background-1 {
@@ -44,15 +56,24 @@ body {
   padding: 25px;
 }
 
+// .landing{
+//   transition: .5s;
+// }
+//
+// .landing:hover{
+//   background-color: #428bca;
+//   opacity: 1;
+// }
+
 .landing-button {
   margin-top: 10px;
 }
 
 .landing-text h1 {
   background-color: #fff;
-  background-color: rgba(255, 255, 255, .5);
+  background-color: rgba(255, 255, 255, .8);
   border: 2px solid $white;
-  border-radius: 3px;
+  border-radius: 5px;
   box-sizing: border-box;
   color: $off-black;
   display: block;
@@ -67,7 +88,7 @@ body {
 
 .landing-div {
   background-color: #fff;
-  background-color: rgba(255, 255, 255, .5);
+  background-color: rgba(255, 255, 255, .8);
   border-radius: 3px;
   color: $off-black;
   display: block;
@@ -80,9 +101,9 @@ body {
   width: 250px;
 }
 
-.landing-div:hover {
-  opacity: 1;
-}
+// .landing-div:hover {
+//   opacity: 1;
+// }
 
 .sign-in-error {
   display: none;
@@ -149,12 +170,29 @@ body {
   font-size: 18px;
   list-style: none;
   opacity: .9;
-  transition: .2s ease;
+  transition: .5s ease;
 
 }
 
 .panel:hover {
   opacity: 1;
+  background: #bbbbbb;
+  color:white;
+}
+//
+// .modal-content {
+//   background: #362815;
+//     color:#faebd7;
+// }
+//
+// .modal-content .btn,{
+//   background: grey;
+//   outline: grey;
+// }
+
+.album-title {
+  font-size: 1.2em;
+  font-weight: bold;
 }
 
 .album-artist {
