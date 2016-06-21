@@ -1,8 +1,6 @@
 'use strict';
 
 const app = require('../app-data');
-const ui = require('./ui');
-
 
 //User CRUD
 const signUp = (success, failure, data) => {
@@ -25,14 +23,10 @@ const signIn = (success, failure, data) => {
   .fail(failure);
 };
 
-
-
-
-
 const changePassword = (success, failure, data) => {
   $.ajax({
     method: "PATCH",
-    url: app.api + 'change-password/' + ui.currentUser.id,
+    url: app.api + 'change-password/' + app.currentUser.id,
     data: {
       'passwords': {
         'old': data.pw_creds.old,
@@ -41,31 +35,22 @@ const changePassword = (success, failure, data) => {
     },
     headers: {
       contentType: "application.json",
-      Authorization: "Token token=" + ui.currentUser.token
+      Authorization: "Token token=" + app.currentUser.token
     },
   }).done(success)
   .fail(failure);
 };
-
 
 const signOut = (success, failure) => {
   $.ajax({
     method: "DELETE",
-    url: app.api + 'sign-out/' + ui.currentUser.id,
+    url: app.api + 'sign-out/' + app.currentUser.id,
     headers: {
-      Authorization: 'Token token=' + ui.currentUser.token
+      Authorization: 'Token token=' + app.currentUser.token
     },
   }).done(success)
   .fail(failure);
 };
-
-
-
-
-
-
-
-
 
 module.exports = {
   signUp,

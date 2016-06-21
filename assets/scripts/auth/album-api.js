@@ -1,16 +1,17 @@
 'use strict';
 
 const app = require('../app-data');
-const ui = require('./ui');
+// const userUi = require('./user-ui');
+const albumUi = require('./album-ui');
 
 //Album CRUD
 const newAlbum = (success, failure, data) => {
   $.ajax({
     method: "POST",
-    url: app.api + 'users/' + ui.currentUser.id +'/albums/',
+    url: app.api + 'users/' + app.currentUser.id +'/albums/',
     dataType: 'json',
     headers: {
-      Authorization: "Token token=" + ui.currentUser.token
+      Authorization: "Token token=" + app.currentUser.token
     },
     data: {
       "album": {
@@ -25,6 +26,52 @@ const newAlbum = (success, failure, data) => {
 };
 
 //Read albums is attached to sign-in succes in auth/ui
+//Read albums
+
+//displayAlbums function used in getAlbums api call. Passes albums object to handlebars. Called by getAblums
+let displayAlbums = function(albums){
+    $('.landing-div').hide();
+    $('.content').html('');
+  let albumsDisplayTemplate = require('../templates/albums-display.handlebars');
+    $('.content').html(albumsDisplayTemplate({
+      albums : albums.albums
+    }));
+    //when album panel is clicked to open edit modal
+    $('.edit-album').on('click', function() {
+      //load clicked album ID from data-attribute into local storage for use in auth/api.editAlbum call
+      localStorage.setItem('ID', $(this).attr('data-attribute'));
+      //sets value of 'edit album' fields so that they don't default to empty
+      $('#editAlbumTitle').val($(this).find('.album-title').text());
+      $('#editAlbumArtist').val($(this).find('.album-artist').text());
+      $('#editAlbumThoughts').val($(this).find('.album-thoughts').text());
+      $('#editAlbumModal').modal('show');
+      //adds album info to the album cover fields
+      $('#albumCoverTitle').val($(this).find('.album-title').text());
+      $('#albumCoverArtist').val($(this).find('.album-artist').text());
+      if ($('.cover-image').attr('src') !== ''){
+        $('.delete-cover').show();
+      }
+      });
+    //shows add album modal
+    $('.open-new-album').on('click', function(event){
+      event.preventDefault();
+      $('#newAlbumModal').modal('show');
+  });
+};
+
+let getAlbums = function(){
+  $.ajax({
+    method: "GET",
+    url: app.api + 'users/' + app.currentUser.id + '/albums',
+    dataType: 'json',
+    headers: {
+      Authorization: "Token token=" + app.currentUser.token
+    }
+  }).done(function(albums){
+    console.log('get albums success');
+    displayAlbums(albums);
+  });
+};
 
 
 //Update Album
@@ -41,7 +88,7 @@ const editAlbum = (success, failure, data) => {
      }
    },
    headers:{
-     Authorization: "Token token=" + ui.currentUser.token,
+     Authorization: "Token token=" + app.currentUser.token,
    }
  }).done(success)
  .fail(failure);
@@ -55,7 +102,7 @@ const deleteAlbum = (success, failure) => {
     method: 'DELETE',
     url: app.api + 'albums/' + album_id,
     headers: {
-      Authorization: 'Token token=' + ui.currentUser.token
+      Authorization: 'Token token=' + app.currentUser.token
     },
   }).done(success)
   .fail(failure);
@@ -90,7 +137,7 @@ const albumCoverPatch = (success, failure, data) => {
      }
    },
    headers:{
-     Authorization: "Token token=" + ui.currentUser.token,
+     Authorization: "Token token=" + app.currentUser.token,
    }
  }).done(success)
  .fail(failure);
@@ -109,7 +156,7 @@ const albumCoverSuccess = (data) => {
   }else if(data.album !== undefined && data.album.image[3]['#text'] !== '' ){
     $('.album-cover-error').text("");
     let albumCoverValue = data.album.image[3]['#text'];
-    albumCoverPatch(ui.editAlbumSuccess, ui.failure, albumCoverValue);
+    albumCoverPatch(albumUi.editAlbumSuccess, albumUi.editAlbumFailure, albumCoverValue);
     $('.delete-album').show();
   }else {
     $('.album-cover-error').text("Album cover is unavailable");
@@ -127,7 +174,7 @@ const deleteCover = (success, failure) => {
      }
    },
    headers:{
-     Authorization: "Token token=" + ui.currentUser.token,
+     Authorization: "Token token=" + app.currentUser.token,
    }
  }).done(success)
  .fail(failure);
@@ -135,6 +182,7 @@ const deleteCover = (success, failure) => {
 
 module.exports = {
   newAlbum,
+  getAlbums,
   editAlbum,
   deleteAlbum,
   getAlbumCover,
