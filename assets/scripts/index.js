@@ -6,7 +6,8 @@
 // use require without a reference to ensure a file is bundled
 
 
-const authApi = require('./auth/api');
+const userApi = require('./auth/user-api');
+const albumApi = require('./auth/album-api');
 const authUi = require('./auth/ui');
 const getFormFields = require('../../lib/get-form-fields');
 
@@ -54,24 +55,24 @@ $('#sign-up').on('submit', function (event){
   localStorage.setItem('email', data.credentials.email);
   localStorage.setItem('password', data.credentials.password);
   event.preventDefault();
-  authApi.signUp(authUi.signUpSuccess, authUi.signUpFail, data);
+  userApi.signUp(authUi.signUpSuccess, authUi.signUpFail, data);
 });
 
 $('#sign-in').on('submit', function (event){
   let data = getFormFields(this);
   event.preventDefault();
-  authApi.signIn(authUi.signInSuccess, authUi.signInFail, data);
+  userApi.signIn(authUi.signInSuccess, authUi.signInFail, data);
 });
 
 $('#change-password').on('submit', function(event){
   let data = getFormFields(this);
   event.preventDefault();
-  authApi.changePassword(authUi.changePasswordSuccess, authUi.failure, data);
+  userApi.changePassword(authUi.changePasswordSuccess, authUi.failure, data);
 });
 
 $('.sign-out').on('click', function(event){
   event.preventDefault();
-  authApi.signOut(authUi.signOutSuccess, authUi.failure);
+  userApi.signOut(authUi.signOutSuccess, authUi.failure);
 });
 
 
@@ -81,31 +82,31 @@ $('.sign-out').on('click', function(event){
 $('#new-album').on('submit', function(event){
   let data = getFormFields(this);
   event.preventDefault();
-  authApi.newAlbum(authUi.newAlbumSuccess, authUi.newAlbumFail, data);
+  userApi.newAlbum(authUi.newAlbumSuccess, authUi.newAlbumFail, data);
 });
 
 $('#edit-album-form').on('submit', function(event){
   event.preventDefault();
   let data = getFormFields(this);
-  authApi.editAlbum(authUi.editAlbumSuccess, authUi.failure, data);
+  userApi.editAlbum(authUi.editAlbumSuccess, authUi.failure, data);
 });
 
 $('#album-cover-form').on('submit', function(event){
   let data = getFormFields(this);
   console.log(data);
   event.preventDefault();
-  authApi.getAlbumCover(authApi.albumCoverSuccess, authUi.failure, data);
+  userApi.getAlbumCover(albumApi.albumCoverSuccess, authUi.failure, data);
 });
 
 $('#deleteAlbumConfirm').on('click', function(event){
   let data = getFormFields(this);
   event.preventDefault();
-  authApi.deleteAlbum(authUi.deleteAlbumSuccess, authUi.failure, data);
+  userApi.deleteAlbum(authUi.deleteAlbumSuccess, authUi.failure, data);
 });
 
 $('.delete-cover').on('click', function(event) {
   event.preventDefault();
-  authApi.deleteCover(authUi.deleteCoverSuccess, authUi.failure);
+  userApi.deleteCover(authUi.deleteCoverSuccess, authUi.failure);
 });
 
 // $(() =>{
