@@ -1,8 +1,7 @@
 'use strict';
 
 const app = require('../app-data');
-// const userUi = require('./user-ui');
-// const albumUi = require('./album-ui');
+
 
 //Album CRUD
 const newAlbum = (success, failure, data) => {
@@ -25,8 +24,7 @@ const newAlbum = (success, failure, data) => {
   .fail(failure);
 };
 
-//Read albums is attached to sign-in succes in auth/ui
-//Read albums
+
 
 //displayAlbums function used in getAlbums api call. Passes albums object to handlebars. Called by getAblums
 let displayAlbums = function(albums){

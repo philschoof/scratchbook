@@ -1,11 +1,9 @@
 'use strict';
 
 const app = require('../app-data');
-// const albumUi = require('./album-ui');
 const albumApi = require('./album-api');
 let moment = require('moment');
 moment().format();
-
 
 
 
@@ -19,14 +17,6 @@ let setBackground = function() {
   currentBackground = backgroundClasses[backgroundIndex];
   return currentBackground;
 };
-
-
-
-
-
-
-//////API outcomes
-
 
 //User
 
@@ -60,32 +50,8 @@ const signInFail = () => {
   $('.sign-in-error').show();
 };
 
-
-
-// //attached to sign-up success
-// const autoSignIn = (success, failire, data) => {
-//   $.ajax({
-//     method: 'POST',
-//     url: app.api + 'sign-in',
-//     data: {
-//       "credentials": {
-//         "email": data.email,
-//         "password": data.password
-//       }
-//     }
-//   })
-//   .done(success)
-//   .fail(failure);
-// };
-
-
 const signUpSuccess = () => {
   console.log('signed-up');
-  // let data = {
-  //   email: localStorage.getItem("email"),
-  //   password: localStorage.getItem("pw")
-  // };
-  // autoSignIn(signInSuccess, signInFail, data);
   $('#signUpModal').modal('hide');
   $('.sign-up-error').text('');
   $('.open-signup').hide();
@@ -115,13 +81,6 @@ const signOutSuccess = () => {
   $('#dropdown').hide();
 
 };
-
-
-
-
-
-
-
 
 
 
