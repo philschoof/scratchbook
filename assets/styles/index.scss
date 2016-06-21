@@ -176,8 +176,12 @@ body {
 
 .panel:hover {
   opacity: 1;
-  background: #bbbbbb;
+  background: #999;
   color:white;
+}
+
+.panel:hover .album-thoughts{
+  border-left: 2px solid $white;
 }
 //
 // .modal-content {
