@@ -2,7 +2,7 @@
 
 const app = require('../app-data');
 // const userUi = require('./user-ui');
-const albumUi = require('./album-ui');
+// const albumUi = require('./album-ui');
 
 //Album CRUD
 const newAlbum = (success, failure, data) => {
@@ -74,8 +74,24 @@ let getAlbums = function(){
 };
 
 
+const editAlbumSuccess = () => {
+  console.log("edit album success reached");
+  if(localStorage.getItem('ID')){
+    localStorage.removeItem('ID');
+  }
+  $('#editAlbumModal').modal('hide');
+  $('#albumCoverModal').modal('hide');
+  console.log('edit ablum success');
+  getAlbums();
+};
+
+const editAlbumFailure = () => {
+  console.log('edit album failure');
+};
+
 //Update Album
 const editAlbum = (success, failure, data) => {
+  console.log('edit album reached');
   let album_id = localStorage.getItem('ID');
  $.ajax({
    method: 'PATCH',
@@ -117,6 +133,7 @@ let prepareData = function(name){
 
 //Request to lastfm API
 const getAlbumCover = (success, failure, data) => {
+  console.log('album-api reached');
   let preparedArtist = prepareData(data.album.artist);
   let preparedAlbum = prepareData(data.album.title);
   $.ajax({
@@ -127,6 +144,7 @@ const getAlbumCover = (success, failure, data) => {
 
 //Patch request for album cover
 const albumCoverPatch = (success, failure, data) => {
+  console.log('album cover patch reached');
   let album_id = localStorage.getItem('ID');
  $.ajax({
    method: 'PATCH',
@@ -156,14 +174,23 @@ const albumCoverSuccess = (data) => {
   }else if(data.album !== undefined && data.album.image[3]['#text'] !== '' ){
     $('.album-cover-error').text("");
     let albumCoverValue = data.album.image[3]['#text'];
-    albumCoverPatch(albumUi.editAlbumSuccess, albumUi.editAlbumFailure, albumCoverValue);
+    albumCoverPatch(editAlbumSuccess, editAlbumFailure, albumCoverValue);
     $('.delete-album').show();
   }else {
     $('.album-cover-error').text("Album cover is unavailable");
   }
 };
 
+const deleteCoverSuccess = () => {
+  console.log('cover deleted');
+  $('.delete-cover').hide();
+  $('#editAlbumModal').modal('hide');
+  $('#albumCoverModal').modal('hide');
+  getAlbums();
+};
+
 const deleteCover = (success, failure) => {
+  console.log('delete cover ajax');
   let album_id = localStorage.getItem('ID');
  $.ajax({
    method: 'PATCH',
@@ -184,9 +211,12 @@ module.exports = {
   newAlbum,
   getAlbums,
   editAlbum,
+  editAlbumSuccess,
+  editAlbumFailure,
   deleteAlbum,
   getAlbumCover,
   albumCoverSuccess,
   albumCoverPatch,
-  deleteCover
+  deleteCover,
+  deleteCoverSuccess
 };

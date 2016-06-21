@@ -83,31 +83,32 @@ $('.sign-out').on('click', function(event){
 $('#new-album').on('submit', function(event){
   let data = getFormFields(this);
   event.preventDefault();
-  userApi.newAlbum(albumUi.newAlbumSuccess, albumUi.newAlbumFail, data);
+  albumApi.newAlbum(albumUi.newAlbumSuccess, albumUi.newAlbumFail, data);
 });
 
 $('#edit-album-form').on('submit', function(event){
   event.preventDefault();
   let data = getFormFields(this);
-  userApi.editAlbum(albumUi.editAlbumSuccess, albumUi.failure, data);
+  albumApi.editAlbum(albumApi.editAlbumSuccess, albumApi.editAlbumFailure, data);
 });
 
 $('#album-cover-form').on('submit', function(event){
   let data = getFormFields(this);
   console.log(data);
   event.preventDefault();
-  userApi.getAlbumCover(albumApi.albumCoverSuccess, albumUi.failure, data);
+  albumApi.getAlbumCover(albumApi.albumCoverSuccess, albumUi.failure, data);
 });
 
 $('#deleteAlbumConfirm').on('click', function(event){
   let data = getFormFields(this);
   event.preventDefault();
-  userApi.deleteAlbum(albumUi.deleteAlbumSuccess, albumUi.failure, data);
+  albumApi.deleteAlbum(albumUi.deleteAlbumSuccess, albumUi.failure, data);
 });
 
 $('.delete-cover').on('click', function(event) {
+  console.log("delete cover clicked");
   event.preventDefault();
-  userApi.deleteCover(albumUi.deleteCoverSuccess, albumUi.failure);
+  albumApi.deleteCover(albumApi.deleteCoverSuccess, albumUi.failure);
 });
 
 // $(() =>{

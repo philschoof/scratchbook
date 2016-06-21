@@ -15,19 +15,8 @@ const newAlbumFail = (data) => {
   $('.new-album-error').text("Cannot add album");
 };
 
-const editAlbumSuccess = () => {
-  if(localStorage.getItem('ID')){
-    localStorage.removeItem('ID');
-  }
-  $('#editAlbumModal').modal('hide');
-  $('#albumCoverModal').modal('hide');
-  console.log('edit ablum success');
-  albumApi.getAlbums();
-};
 
-const editAlbumFailure = () => {
-  console.log('edit album failure');
-};
+//Edit album success and failure are in album-api
 
 const deleteAlbumSuccess = () => {
   console.log('deleted');
@@ -36,20 +25,16 @@ const deleteAlbumSuccess = () => {
   albumApi.getAlbums();
 };
 
-const deleteCoverSuccess = () => {
-  console.log('cover deleted');
-  $('.delete-cover').hide();
-  $('#editAlbumModal').modal('hide');
-  $('#albumCoverModal').modal('hide');
-  albumApi.getAlbums();
+
+
+const failure = () => {
+  console.log('fail');
 };
 
 
 module.export = {
   newAlbumSuccess,
   newAlbumFail,
-  editAlbumSuccess,
-  editAlbumFailure,
   deleteAlbumSuccess,
-  deleteCoverSuccess
+  failure
 };
