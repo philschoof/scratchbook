@@ -108,6 +108,13 @@ const editAlbum = (success, failure, data) => {
  .fail(failure);
 };
 
+const deleteAlbumSuccess = () => {
+  console.log('deleted');
+  $('#deleteAlbumModal').modal('hide');
+  $('#editAlbumModal').modal('hide');
+  getAlbums();
+};
+
 
 //Delete Album
 const deleteAlbum = (success, failure) => {
@@ -212,6 +219,7 @@ module.exports = {
   editAlbumSuccess,
   editAlbumFailure,
   deleteAlbum,
+  deleteAlbumSuccess,
   getAlbumCover,
   albumCoverSuccess,
   albumCoverPatch,

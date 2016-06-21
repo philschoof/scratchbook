@@ -27,7 +27,7 @@ const albumEventHandlers = () => {
   $('#deleteAlbumConfirm').on('click', function(event){
     let data = getFormFields(this);
     event.preventDefault();
-    albumApi.deleteAlbum(albumUi.deleteAlbumSuccess, albumUi.failure, data);
+    albumApi.deleteAlbum(albumApi.deleteAlbumSuccess, albumUi.failure, data);
   });
 
   $('.delete-cover').on('click', function(event) {

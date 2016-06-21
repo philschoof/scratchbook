@@ -16,14 +16,8 @@ const newAlbumFail = (data) => {
 };
 
 
-//Edit album success and failure are in album-api
+//Edit + delete album success and failure are in album-api
 
-const deleteAlbumSuccess = () => {
-  console.log('deleted');
-  $('#deleteAlbumModal').modal('hide');
-  $('#editAlbumModal').modal('hide');
-  albumApi.getAlbums();
-};
 
 
 
@@ -35,6 +29,5 @@ const failure = () => {
 module.export = {
   newAlbumSuccess,
   newAlbumFail,
-  deleteAlbumSuccess,
   failure
 };
