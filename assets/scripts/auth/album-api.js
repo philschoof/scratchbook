@@ -2,30 +2,6 @@
 
 const app = require('../app-data');
 
-
-//Album CRUD
-const newAlbum = (success, failure, data) => {
-  $.ajax({
-    method: "POST",
-    url: app.api + 'users/' + app.currentUser.id +'/albums/',
-    dataType: 'json',
-    headers: {
-      Authorization: "Token token=" + app.currentUser.token
-    },
-    data: {
-      "album": {
-        "title": data.album.title,
-        "artist": data.album.artist,
-        "thoughts": data.album.thoughts
-      }
-    }
-  })
-  .done(success)
-  .fail(failure);
-};
-
-
-
 //displayAlbums function used in getAlbums api call. Passes albums object to handlebars. Called by getAblums
 let displayAlbums = function(albums){
     $('.landing-div').hide();
@@ -71,6 +47,39 @@ let getAlbums = function(){
   });
 };
 
+
+const newAlbumSuccess = () => {
+  console.log('new album success');
+  $('#newAlbumModal').modal('hide');
+  $('.delete-cover').hide();
+  getAlbums();
+};
+
+const newAlbumFailure = (data) => {
+  console.log(data);
+  $('.new-album-error').text("Cannot add album");
+};
+
+//Album CRUD
+const newAlbum = (success, failure, data) => {
+  $.ajax({
+    method: "POST",
+    url: app.api + 'users/' + app.currentUser.id +'/albums/',
+    dataType: 'json',
+    headers: {
+      Authorization: "Token token=" + app.currentUser.token
+    },
+    data: {
+      "album": {
+        "title": data.album.title,
+        "artist": data.album.artist,
+        "thoughts": data.album.thoughts
+      }
+    }
+  })
+  .done(success)
+  .fail(failure);
+};
 
 const editAlbumSuccess = () => {
   console.log("edit album success reached");
@@ -214,6 +223,8 @@ const deleteCover = (success, failure) => {
 
 module.exports = {
   newAlbum,
+  newAlbumSuccess,
+  newAlbumFailure,
   getAlbums,
   editAlbum,
   editAlbumSuccess,

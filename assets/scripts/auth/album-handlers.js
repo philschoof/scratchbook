@@ -1,14 +1,13 @@
 'use strict';
 
 const albumApi = require('./album-api');
-const albumUi = require('./album-ui');
 const getFormFields = require('../../../lib/get-form-fields');
 
 const albumEventHandlers = () => {
   $('#new-album').on('submit', function(event){
     let data = getFormFields(this);
     event.preventDefault();
-    albumApi.newAlbum(albumUi.newAlbumSuccess, albumUi.newAlbumFail, data);
+    albumApi.newAlbum(albumApi.newAlbumSuccess, albumApi.newAlbumFailure, data);
   });
 
   $('#edit-album-form').on('submit', function(event){
@@ -21,19 +20,19 @@ const albumEventHandlers = () => {
     let data = getFormFields(this);
     console.log(data);
     event.preventDefault();
-    albumApi.getAlbumCover(albumApi.albumCoverSuccess, albumUi.failure, data);
+    albumApi.getAlbumCover(albumApi.albumCoverSuccess, albumApi.failure, data);
   });
 
   $('#deleteAlbumConfirm').on('click', function(event){
     let data = getFormFields(this);
     event.preventDefault();
-    albumApi.deleteAlbum(albumApi.deleteAlbumSuccess, albumUi.failure, data);
+    albumApi.deleteAlbum(albumApi.deleteAlbumSuccess, albumApi.failure, data);
   });
 
   $('.delete-cover').on('click', function(event) {
     console.log("delete cover clicked");
     event.preventDefault();
-    albumApi.deleteCover(albumApi.deleteCoverSuccess, albumUi.failure);
+    albumApi.deleteCover(albumApi.deleteCoverSuccess, albumApi.failure);
   });
 };
 
