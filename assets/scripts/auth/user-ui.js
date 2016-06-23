@@ -13,7 +13,7 @@ let currentBackground = '';
 let setBackground = function() {
   let backgroundClasses = ['signed-in-background-1', 'signed-in-background-2', 'signed-in-background-3','signed-in-background-1', 'signed-in-background-2' ];
   let backgroundIndex = Math.floor(Math.random() * 5);
-  console.log("background index:", backgroundIndex);
+  // console.log("background index:", backgroundIndex);
   currentBackground = backgroundClasses[backgroundIndex];
   return currentBackground;
 };
@@ -21,14 +21,14 @@ let setBackground = function() {
 //User
 
 const failure = (error) => {
-  console.log("fail");
-  console.log(error);
+  // console.log("fail");
+  // console.log(error);
 };
 
 
 const signInSuccess = (data) => {
-  console.log('signed-in');
-  console.log(app);
+  // console.log('signed-in');
+  // console.log(app);
   app.currentUser.token = data.user.token;
   app.currentUser.id = data.user.id;
   app.currentUser.username = data.user.username;
@@ -46,12 +46,12 @@ const signInSuccess = (data) => {
 };
 
 const signInFail = () => {
-  console.log('sign up fail');
+  // console.log('sign up fail');
   $('.sign-in-error').show();
 };
 
 const signUpSuccess = () => {
-  console.log('signed-up');
+  // console.log('signed-up');
   $('#signUpModal').modal('hide');
   $('.sign-up-error').text('');
   $('.open-signup').hide();
@@ -59,12 +59,12 @@ const signUpSuccess = () => {
 };
 
 const signUpFail = () => {
-  console.log('sign up fail');
+  // console.log('sign up fail');
   $('.sign-up-error').show();
 };
 
 const changePasswordSuccess = () => {
-  console.log('changed password');
+  // console.log('changed password');
   $('#changePasswordModal').modal('hide');
 };
 
@@ -77,7 +77,7 @@ const signOutSuccess = () => {
   $('.landing').show();
   $('.open-signup').show();
   $('.open-signin').text('Been here before?');
-  console.log('signed out');
+  // console.log('signed out');
   $('#dropdown').hide();
 
 };

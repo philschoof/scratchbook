@@ -18,7 +18,7 @@ const albumEventHandlers = () => {
 
   $('#album-cover-form').on('submit', function(event){
     let data = getFormFields(this);
-    console.log(data);
+    // console.log(data);
     event.preventDefault();
     albumApi.getAlbumCover(albumApi.albumCoverSuccess, albumApi.failure, data);
   });
@@ -30,7 +30,7 @@ const albumEventHandlers = () => {
   });
 
   $('.delete-cover').on('click', function(event) {
-    console.log("delete cover clicked");
+    // console.log("delete cover clicked");
     event.preventDefault();
     albumApi.deleteCover(albumApi.deleteCoverSuccess, albumApi.failure);
   });

@@ -7,7 +7,7 @@ const getFormFields = require('../../../lib/get-form-fields');
 const userEventHandlers = () => {
   $('#sign-up').on('submit', function (event){
     let data = getFormFields(this);
-    console.log(data);
+    // console.log(data);
     localStorage.setItem('email', data.credentials.email);
     localStorage.setItem('password', data.credentials.password);
     event.preventDefault();

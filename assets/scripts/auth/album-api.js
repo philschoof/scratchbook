@@ -42,21 +42,21 @@ let getAlbums = function(){
       Authorization: "Token token=" + app.currentUser.token
     }
   }).done(function(albums){
-    console.log('get albums success');
+    // console.log('get albums success');
     displayAlbums(albums);
   });
 };
 
 
 const newAlbumSuccess = () => {
-  console.log('new album success');
+  // console.log('new album success');
   $('#newAlbumModal').modal('hide');
   $('.delete-cover').hide();
   getAlbums();
 };
 
 const newAlbumFailure = (data) => {
-  console.log(data);
+  // console.log(data);
   $('.new-album-error').text("Cannot add album");
 };
 
@@ -82,23 +82,23 @@ const newAlbum = (success, failure, data) => {
 };
 
 const editAlbumSuccess = () => {
-  console.log("edit album success reached");
+  // console.log("edit album success reached");
   if(localStorage.getItem('ID')){
     localStorage.removeItem('ID');
   }
   $('#editAlbumModal').modal('hide');
   $('#albumCoverModal').modal('hide');
-  console.log('edit ablum success');
+  // console.log('edit ablum success');
   getAlbums();
 };
 
 const editAlbumFailure = () => {
-  console.log('edit album failure');
+  // console.log('edit album failure');
 };
 
 //Update Album
 const editAlbum = (success, failure, data) => {
-  console.log('edit album reached');
+  // console.log('edit album reached');
   let album_id = localStorage.getItem('ID');
  $.ajax({
    method: 'PATCH',
@@ -118,7 +118,7 @@ const editAlbum = (success, failure, data) => {
 };
 
 const deleteAlbumSuccess = () => {
-  console.log('deleted');
+  // console.log('deleted');
   $('#deleteAlbumModal').modal('hide');
   $('#editAlbumModal').modal('hide');
   getAlbums();
@@ -147,7 +147,7 @@ let prepareData = function(name){
 
 //Request to lastfm API
 const getAlbumCover = (success, failure, data) => {
-  console.log('album-api reached');
+  // console.log('album-api reached');
   let preparedArtist = prepareData(data.album.artist);
   let preparedAlbum = prepareData(data.album.title);
   $.ajax({
@@ -158,7 +158,7 @@ const getAlbumCover = (success, failure, data) => {
 
 //Patch request for album cover
 const albumCoverPatch = (success, failure, data) => {
-  console.log('album cover patch reached');
+  // console.log('album cover patch reached');
   let album_id = localStorage.getItem('ID');
  $.ajax({
    method: 'PATCH',
@@ -177,7 +177,7 @@ const albumCoverPatch = (success, failure, data) => {
 
 //Tests if returned image is valid, then runs edit album success in ui, which clears local storage, hides modals and runs getAlbums()
 const albumCoverSuccess = (data) => {
-  console.log("cover success", data);
+  // console.log("cover success", data);
   if (data.message === "Album not found"){
     $('.album-cover-error').text("Album not found");
   }
@@ -196,7 +196,7 @@ const albumCoverSuccess = (data) => {
 };
 
 const deleteCoverSuccess = () => {
-  console.log('cover deleted');
+  // console.log('cover deleted');
   $('.delete-cover').hide();
   $('#editAlbumModal').modal('hide');
   $('#albumCoverModal').modal('hide');
@@ -204,7 +204,7 @@ const deleteCoverSuccess = () => {
 };
 
 const deleteCover = (success, failure) => {
-  console.log('delete cover ajax');
+  // console.log('delete cover ajax');
   let album_id = localStorage.getItem('ID');
  $.ajax({
    method: 'PATCH',
