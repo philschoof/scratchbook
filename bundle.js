@@ -29,11 +29,6 @@ webpackJsonp([0],[
 
 	/* WEBPACK VAR INJECTION */(function($) {'use strict';
 
-	// use require with a reference to bundle the file and use it in this file
-	// var example = require('./example');
-
-	// use require without a reference to ensure a file is bundled
-
 	var modalEventHandlers = __webpack_require__(3);
 	var userEventHandlers = __webpack_require__(4);
 	var albumEventHandlers = __webpack_require__(133);
@@ -101,7 +96,7 @@ webpackJsonp([0],[
 	var userEventHandlers = function userEventHandlers() {
 	  $('#sign-up').on('submit', function (event) {
 	    var data = getFormFields(this);
-	    console.log(data);
+	    // console.log(data);
 	    localStorage.setItem('email', data.credentials.email);
 	    localStorage.setItem('password', data.credentials.password);
 	    event.preventDefault();
@@ -228,7 +223,7 @@ webpackJsonp([0],[
 	var setBackground = function setBackground() {
 	  var backgroundClasses = ['signed-in-background-1', 'signed-in-background-2', 'signed-in-background-3', 'signed-in-background-1', 'signed-in-background-2'];
 	  var backgroundIndex = Math.floor(Math.random() * 5);
-	  console.log("background index:", backgroundIndex);
+	  // console.log("background index:", backgroundIndex);
 	  currentBackground = backgroundClasses[backgroundIndex];
 	  return currentBackground;
 	};
@@ -236,13 +231,13 @@ webpackJsonp([0],[
 	//User
 
 	var failure = function failure(error) {
-	  console.log("fail");
-	  console.log(error);
+	  // console.log("fail");
+	  // console.log(error);
 	};
 
 	var signInSuccess = function signInSuccess(data) {
-	  console.log('signed-in');
-	  console.log(app);
+	  // console.log('signed-in');
+	  // console.log(app);
 	  app.currentUser.token = data.user.token;
 	  app.currentUser.id = data.user.id;
 	  app.currentUser.username = data.user.username;
@@ -260,12 +255,12 @@ webpackJsonp([0],[
 	};
 
 	var signInFail = function signInFail() {
-	  console.log('sign up fail');
+	  // console.log('sign up fail');
 	  $('.sign-in-error').show();
 	};
 
 	var signUpSuccess = function signUpSuccess() {
-	  console.log('signed-up');
+	  // console.log('signed-up');
 	  $('#signUpModal').modal('hide');
 	  $('.sign-up-error').text('');
 	  $('.open-signup').hide();
@@ -273,12 +268,12 @@ webpackJsonp([0],[
 	};
 
 	var signUpFail = function signUpFail() {
-	  console.log('sign up fail');
+	  // console.log('sign up fail');
 	  $('.sign-up-error').show();
 	};
 
 	var changePasswordSuccess = function changePasswordSuccess() {
-	  console.log('changed password');
+	  // console.log('changed password');
 	  $('#changePasswordModal').modal('hide');
 	};
 
@@ -291,7 +286,7 @@ webpackJsonp([0],[
 	  $('.landing').show();
 	  $('.open-signup').show();
 	  $('.open-signin').text('Been here before?');
-	  console.log('signed out');
+	  // console.log('signed out');
 	  $('#dropdown').hide();
 	};
 
@@ -354,20 +349,20 @@ webpackJsonp([0],[
 	      Authorization: "Token token=" + app.currentUser.token
 	    }
 	  }).done(function (albums) {
-	    console.log('get albums success');
+	    // console.log('get albums success');
 	    displayAlbums(albums);
 	  });
 	};
 
 	var newAlbumSuccess = function newAlbumSuccess() {
-	  console.log('new album success');
+	  // console.log('new album success');
 	  $('#newAlbumModal').modal('hide');
 	  $('.delete-cover').hide();
 	  getAlbums();
 	};
 
 	var newAlbumFailure = function newAlbumFailure(data) {
-	  console.log(data);
+	  // console.log(data);
 	  $('.new-album-error').text("Cannot add album");
 	};
 
@@ -391,23 +386,23 @@ webpackJsonp([0],[
 	};
 
 	var editAlbumSuccess = function editAlbumSuccess() {
-	  console.log("edit album success reached");
+	  // console.log("edit album success reached");
 	  if (localStorage.getItem('ID')) {
 	    localStorage.removeItem('ID');
 	  }
 	  $('#editAlbumModal').modal('hide');
 	  $('#albumCoverModal').modal('hide');
-	  console.log('edit ablum success');
+	  // console.log('edit ablum success');
 	  getAlbums();
 	};
 
 	var editAlbumFailure = function editAlbumFailure() {
-	  console.log('edit album failure');
+	  // console.log('edit album failure');
 	};
 
 	//Update Album
 	var editAlbum = function editAlbum(success, failure, data) {
-	  console.log('edit album reached');
+	  // console.log('edit album reached');
 	  var album_id = localStorage.getItem('ID');
 	  $.ajax({
 	    method: 'PATCH',
@@ -426,7 +421,7 @@ webpackJsonp([0],[
 	};
 
 	var deleteAlbumSuccess = function deleteAlbumSuccess() {
-	  console.log('deleted');
+	  // console.log('deleted');
 	  $('#deleteAlbumModal').modal('hide');
 	  $('#editAlbumModal').modal('hide');
 	  getAlbums();
@@ -453,7 +448,7 @@ webpackJsonp([0],[
 
 	//Request to lastfm API
 	var getAlbumCover = function getAlbumCover(success, failure, data) {
-	  console.log('album-api reached');
+	  // console.log('album-api reached');
 	  var preparedArtist = prepareData(data.album.artist);
 	  var preparedAlbum = prepareData(data.album.title);
 	  $.ajax({
@@ -463,7 +458,7 @@ webpackJsonp([0],[
 
 	//Patch request for album cover
 	var albumCoverPatch = function albumCoverPatch(success, failure, data) {
-	  console.log('album cover patch reached');
+	  // console.log('album cover patch reached');
 	  var album_id = localStorage.getItem('ID');
 	  $.ajax({
 	    method: 'PATCH',
@@ -481,7 +476,7 @@ webpackJsonp([0],[
 
 	//Tests if returned image is valid, then runs edit album success in ui, which clears local storage, hides modals and runs getAlbums()
 	var albumCoverSuccess = function albumCoverSuccess(data) {
-	  console.log("cover success", data);
+	  // console.log("cover success", data);
 	  if (data.message === "Album not found") {
 	    $('.album-cover-error').text("Album not found");
 	  }
@@ -500,7 +495,7 @@ webpackJsonp([0],[
 	};
 
 	var deleteCoverSuccess = function deleteCoverSuccess() {
-	  console.log('cover deleted');
+	  // console.log('cover deleted');
 	  $('.delete-cover').hide();
 	  $('#editAlbumModal').modal('hide');
 	  $('#albumCoverModal').modal('hide');
@@ -508,7 +503,7 @@ webpackJsonp([0],[
 	};
 
 	var deleteCover = function deleteCover(success, failure) {
-	  console.log('delete cover ajax');
+	  // console.log('delete cover ajax');
 	  var album_id = localStorage.getItem('ID');
 	  $.ajax({
 	    method: 'PATCH',
@@ -15626,7 +15621,7 @@ webpackJsonp([0],[
 
 	  $('#album-cover-form').on('submit', function (event) {
 	    var data = getFormFields(this);
-	    console.log(data);
+	    // console.log(data);
 	    event.preventDefault();
 	    albumApi.getAlbumCover(albumApi.albumCoverSuccess, albumApi.failure, data);
 	  });
@@ -15638,7 +15633,7 @@ webpackJsonp([0],[
 	  });
 
 	  $('.delete-cover').on('click', function (event) {
-	    console.log("delete cover clicked");
+	    // console.log("delete cover clicked");
 	    event.preventDefault();
 	    albumApi.deleteCover(albumApi.deleteCoverSuccess, albumApi.failure);
 	  });
