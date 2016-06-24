@@ -6,7 +6,7 @@ A creates an account and then signs in. Once signed in, __Scratchbook__ displays
 
 Covers are retrieved from the LastFM api via GET request, and a PATCH request is sent to the __Scratchbook__ api with the cover's url upon success.
 
-I originally intended to include a social aspect, where users could "follow" their friends to see their albums and what they thought of them. I decided not to pursure a social function in the interest of time, but would like to revisit it in the future.
+I originally intended to include a social aspect, where users could "follow" their friends to see their albums and what they thought of them. I decided not to pursure a social function in the interest of time, but will be revisiting it in the future.
 
 __User Stories__
 
@@ -25,4 +25,6 @@ __User Stories__
 
 [Wireframes](https://moqups.com/#!/edit/philschoof/6Oo0ssCT)
 
-[Scratchbook](philschoof.github.io/scratchbook/)
+[Scratchbook](http://philschoof.github.io/scratchbook/)
+
+[Scratchbook Server](https://github.com/philschoof/scratchbook-server)
