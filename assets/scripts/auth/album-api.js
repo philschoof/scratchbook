@@ -12,8 +12,9 @@ let displayAlbums = function(albums){
     }));
     //when album panel is clicked to open edit modal
     $('.edit-album').on('click', function() {
-      //load clicked album ID from data-attribute into local storage for use in auth/api.editAlbum call
-      localStorage.setItem('ID', $(this).attr('data-attribute'));
+      //load clicked album ID from data-attribute into app.albumId for use in auth/api.editAlbum call
+      app.albumId = $(this).attr('data-attribute');
+      // console.log(app.albumId);
       //sets value of 'edit album' fields so that they don't default to empty
       $('#editAlbumTitle').val($(this).find('.album-title').text());
       $('#editAlbumArtist').val($(this).find('.album-artist').text());
@@ -83,9 +84,7 @@ const newAlbum = (success, failure, data) => {
 
 const editAlbumSuccess = () => {
   // console.log("edit album success reached");
-  if(localStorage.getItem('ID')){
-    localStorage.removeItem('ID');
-  }
+  app.albumId = 0;
   $('#editAlbumModal').modal('hide');
   $('#albumCoverModal').modal('hide');
   // console.log('edit ablum success');
@@ -99,10 +98,9 @@ const editAlbumFailure = () => {
 //Update Album
 const editAlbum = (success, failure, data) => {
   // console.log('edit album reached');
-  let album_id = localStorage.getItem('ID');
  $.ajax({
    method: 'PATCH',
-   url: app.api + 'albums/' + album_id,
+   url: app.api + 'albums/' + app.albumId,
    data: {
      "album": {
        "title": data.album.title,
@@ -127,10 +125,9 @@ const deleteAlbumSuccess = () => {
 
 //Delete Album
 const deleteAlbum = (success, failure) => {
-  let album_id = localStorage.getItem('ID');
   $.ajax({
     method: 'DELETE',
-    url: app.api + 'albums/' + album_id,
+    url: app.api + 'albums/' + app.albumId,
     headers: {
       Authorization: 'Token token=' + app.currentUser.token
     },
@@ -159,10 +156,9 @@ const getAlbumCover = (success, failure, data) => {
 //Patch request for album cover
 const albumCoverPatch = (success, failure, data) => {
   // console.log('album cover patch reached');
-  let album_id = localStorage.getItem('ID');
  $.ajax({
    method: 'PATCH',
-   url: app.api + 'albums/' + album_id,
+   url: app.api + 'albums/' + app.albumId,
    data: {
      "album": {
        "cover": data,
@@ -175,7 +171,7 @@ const albumCoverPatch = (success, failure, data) => {
  .fail(failure);
 };
 
-//Tests if returned image is valid, then runs edit album success in ui, which clears local storage, hides modals and runs getAlbums()
+//Tests if returned image is valid, then runs edit album success in ui, hides modals and runs getAlbums()
 const albumCoverSuccess = (data) => {
   // console.log("cover success", data);
   if (data.message === "Album not found"){
@@ -205,10 +201,9 @@ const deleteCoverSuccess = () => {
 
 const deleteCover = (success, failure) => {
   // console.log('delete cover ajax');
-  let album_id = localStorage.getItem('ID');
  $.ajax({
    method: 'PATCH',
-   url: app.api + 'albums/' + album_id,
+   url: app.api + 'albums/' + app.albumId,
    data: {
      "album": {
        "cover": '',

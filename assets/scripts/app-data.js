@@ -9,7 +9,8 @@ const app = {
     token:'',
     id: 0,
     username: ''
-  }
+  },
+  albumId : 0
 };
 
 module.exports = app;

@@ -8,8 +8,6 @@ const userEventHandlers = () => {
   $('#sign-up').on('submit', function (event){
     let data = getFormFields(this);
     // console.log(data);
-    localStorage.setItem('email', data.credentials.email);
-    localStorage.setItem('password', data.credentials.password);
     event.preventDefault();
     userApi.signUp(userUi.signUpSuccess, userUi.signUpFail, data);
   });
