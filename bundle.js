@@ -97,8 +97,6 @@ webpackJsonp([0],[
 	  $('#sign-up').on('submit', function (event) {
 	    var data = getFormFields(this);
 	    // console.log(data);
-	    localStorage.setItem('email', data.credentials.email);
-	    localStorage.setItem('password', data.credentials.password);
 	    event.preventDefault();
 	    userApi.signUp(userUi.signUpSuccess, userUi.signUpFail, data);
 	  });
@@ -201,7 +199,8 @@ webpackJsonp([0],[
 	    token: '',
 	    id: 0,
 	    username: ''
-	  }
+	  },
+	  albumId: 0
 	};
 
 	module.exports = app;
@@ -319,8 +318,9 @@ webpackJsonp([0],[
 	  }));
 	  //when album panel is clicked to open edit modal
 	  $('.edit-album').on('click', function () {
-	    //load clicked album ID from data-attribute into local storage for use in auth/api.editAlbum call
-	    localStorage.setItem('ID', $(this).attr('data-attribute'));
+	    //load clicked album ID from data-attribute into app.albumId for use in auth/api.editAlbum call
+	    app.albumId = $(this).attr('data-attribute');
+	    // console.log(app.albumId);
 	    //sets value of 'edit album' fields so that they don't default to empty
 	    $('#editAlbumTitle').val($(this).find('.album-title').text());
 	    $('#editAlbumArtist').val($(this).find('.album-artist').text());
@@ -387,9 +387,7 @@ webpackJsonp([0],[
 
 	var editAlbumSuccess = function editAlbumSuccess() {
 	  // console.log("edit album success reached");
-	  if (localStorage.getItem('ID')) {
-	    localStorage.removeItem('ID');
-	  }
+	  app.albumId = 0;
 	  $('#editAlbumModal').modal('hide');
 	  $('#albumCoverModal').modal('hide');
 	  // console.log('edit ablum success');
@@ -403,10 +401,9 @@ webpackJsonp([0],[
 	//Update Album
 	var editAlbum = function editAlbum(success, failure, data) {
 	  // console.log('edit album reached');
-	  var album_id = localStorage.getItem('ID');
 	  $.ajax({
 	    method: 'PATCH',
-	    url: app.api + 'albums/' + album_id,
+	    url: app.api + 'albums/' + app.albumId,
 	    data: {
 	      "album": {
 	        "title": data.album.title,
@@ -429,10 +426,9 @@ webpackJsonp([0],[
 
 	//Delete Album
 	var deleteAlbum = function deleteAlbum(success, failure) {
-	  var album_id = localStorage.getItem('ID');
 	  $.ajax({
 	    method: 'DELETE',
-	    url: app.api + 'albums/' + album_id,
+	    url: app.api + 'albums/' + app.albumId,
 	    headers: {
 	      Authorization: 'Token token=' + app.currentUser.token
 	    }
@@ -459,10 +455,9 @@ webpackJsonp([0],[
 	//Patch request for album cover
 	var albumCoverPatch = function albumCoverPatch(success, failure, data) {
 	  // console.log('album cover patch reached');
-	  var album_id = localStorage.getItem('ID');
 	  $.ajax({
 	    method: 'PATCH',
-	    url: app.api + 'albums/' + album_id,
+	    url: app.api + 'albums/' + app.albumId,
 	    data: {
 	      "album": {
 	        "cover": data
@@ -474,7 +469,7 @@ webpackJsonp([0],[
 	  }).done(success).fail(failure);
 	};
 
-	//Tests if returned image is valid, then runs edit album success in ui, which clears local storage, hides modals and runs getAlbums()
+	//Tests if returned image is valid, then runs edit album success in ui, hides modals and runs getAlbums()
 	var albumCoverSuccess = function albumCoverSuccess(data) {
 	  // console.log("cover success", data);
 	  if (data.message === "Album not found") {
@@ -504,10 +499,9 @@ webpackJsonp([0],[
 
 	var deleteCover = function deleteCover(success, failure) {
 	  // console.log('delete cover ajax');
-	  var album_id = localStorage.getItem('ID');
 	  $.ajax({
 	    method: 'PATCH',
-	    url: app.api + 'albums/' + album_id,
+	    url: app.api + 'albums/' + app.albumId,
 	    data: {
 	      "album": {
 	        "cover": ''
