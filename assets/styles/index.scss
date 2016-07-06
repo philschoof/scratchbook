@@ -101,9 +101,6 @@ body {
   width: 250px;
 }
 
-// .landing-div:hover {
-//   opacity: 1;
-// }
 
 .sign-in-error {
   display: none;
@@ -223,6 +220,10 @@ body {
 .new-album-error {
   color: $light-blue;
   text-align: center;
+}
+
+.hidden {
+  display: none;
 }
 
 

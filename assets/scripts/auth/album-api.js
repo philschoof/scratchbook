@@ -14,6 +14,7 @@ let displayAlbums = function(albums){
     $('.edit-album').on('click', function() {
       //load clicked album ID from data-attribute into app.albumId for use in auth/api.editAlbum call
       app.albumId = $(this).attr('data-attribute');
+      $('.get-cover').show();
       // console.log(app.albumId);
       //sets value of 'edit album' fields so that they don't default to empty
       $('#editAlbumTitle').val($(this).find('.album-title').text());
@@ -25,6 +26,7 @@ let displayAlbums = function(albums){
       $('#albumCoverArtist').val($(this).find('.album-artist').text());
       if ($('.cover-image').attr('src') !== ''){
         $('.delete-cover').show();
+        $('.get-cover').hide();
       }
       });
     //shows add album modal
@@ -49,6 +51,10 @@ let getAlbums = function(){
 };
 
 
+//Album CRUD
+
+//New Album
+
 const newAlbumSuccess = () => {
   // console.log('new album success');
   $('#newAlbumModal').modal('hide');
@@ -61,7 +67,7 @@ const newAlbumFailure = (data) => {
   $('.new-album-error').text("Cannot add album");
 };
 
-//Album CRUD
+
 const newAlbum = (success, failure, data) => {
   $.ajax({
     method: "POST",
@@ -81,6 +87,10 @@ const newAlbum = (success, failure, data) => {
   .done(success)
   .fail(failure);
 };
+
+
+//Update Ablum
+
 
 const editAlbumSuccess = () => {
   // console.log("edit album success reached");
@@ -115,6 +125,10 @@ const editAlbum = (success, failure, data) => {
  .fail(failure);
 };
 
+
+//Delete Album
+
+
 const deleteAlbumSuccess = () => {
   // console.log('deleted');
   $('#deleteAlbumModal').modal('hide');
@@ -135,6 +149,10 @@ const deleteAlbum = (success, failure) => {
   .fail(failure);
 };
 
+
+//Album Cover
+
+
 //function to adjust user input to api naming conventions
 let prepareData = function(name){
   name = name.split(' ');
@@ -146,9 +164,15 @@ let prepareData = function(name){
 const getAlbumCover = (success, failure, data) => {
   // console.log('album-api reached');
   let preparedArtist = prepareData(data.album.artist);
-  let preparedAlbum = prepareData(data.album.title);
+  let preparedTitle = prepareData(data.album.title);
   $.ajax({
-    url: app.lastFm + preparedArtist + '&album=' + preparedAlbum + '&format=json'
+    url: app.api + 'album-cover/',
+    data: {
+      "album": {
+        "title": preparedTitle,
+        "artist": preparedArtist
+      }
+    }
   }).done(success)
   .fail(failure);
 };
@@ -194,6 +218,7 @@ const albumCoverSuccess = (data) => {
 const deleteCoverSuccess = () => {
   // console.log('cover deleted');
   $('.delete-cover').hide();
+  $('.get-cover').show();
   $('#editAlbumModal').modal('hide');
   $('#albumCoverModal').modal('hide');
   getAlbums();
